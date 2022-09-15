@@ -9,7 +9,7 @@ from core.tools.base_models import Base_models
 
 class Blog(Base_models):
     title = models.CharField(max_length=200)
-    description = RichTextField()
+    description = RichTextField(help_text=_('Enter the description of the blog'))
     image = models.ImageField(upload_to='blog/', blank=True, null=True)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class HR(Base_models):
 
     def __str__(self):
         return self.title
-
+from django.utils.translation import gettext as _
 
 class About(Base_models):
     title = models.CharField(max_length=200)

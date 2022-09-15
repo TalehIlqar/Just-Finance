@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+import sqlite3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',
@@ -80,6 +82,12 @@ WSGI_APPLICATION = 'just_finance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 DATABASES = {
     "default": {
@@ -119,6 +127,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('az', gettext('Azerbaijan')),
+    ('en', gettext('English')),
+    ('ru', gettext('Russian')),
+)
+
+MODELTRANSLATION_LANGUAGES = ('en', 'az', 'ru')
+
+LOCALE_PATHS = (
+    os.path.join(os.path.dirname(__file__), "locale"),
+)
 
 TIME_ZONE = 'UTC'
 
