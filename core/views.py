@@ -25,7 +25,10 @@ def about(request):
 
 
 def contact(request):
-    return render(request, "contact.html")
+    context = {
+        "title": _("Contact"),
+    }
+    return render(request, "contact.html", context)
 
 
 def services(request):
