@@ -1,7 +1,6 @@
 git+https://github.com/Labrin/django-suit@v3#egg=django-suit-labrin
 asgiref==3.5.0
 autopep8==1.6.0
-backports.zoneinfo==0.2.1
 bcrypt==3.1.7
 certifi==2021.10.8
 cffi==1.15.1

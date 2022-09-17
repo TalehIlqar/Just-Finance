@@ -1,0 +1,52 @@
+<nav class="navbar fixed-top navbar-expand-lg {% if request.path != '/' %}navbar-light bg-light{% endif %}">
+    <div class="container">
+
+        <a href="/" class="navbar-brand">
+            <i class="bi-layers"></i> Just finance
+        </a>
+
+        <a href="/contact" class="custom-btn btn btn-lg d-lg-none ms-auto me-4">
+            Bizimlə əlaqə
+            <i class="bi-download ms-2"></i>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/services">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#section_5">Pricing</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+
+            <div class="ms-auto d-none d-lg-block">
+                <a href="#" class="custom-btn btn btn-lg">
+                    Bizimlə əlaqə
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

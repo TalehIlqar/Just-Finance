@@ -46,3 +46,7 @@ db.sqlite3
 locale/
 sendgrid.env
 celerybeat-schedule
+pgdb/
+redisdb/
+venv/
+.venv/
