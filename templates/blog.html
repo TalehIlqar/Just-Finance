@@ -11,97 +11,26 @@
                     <div class="col-12">
                         <h2 class="mb-5 text-center">Blogs</h2>
                     </div>
+                    {% for blog in blogs %}
+                        <div class="col-lg-4 col-12">
+                            <div class="work-thumb mb-4">
+                                <div class="work-image-wrap">
+                                    <a href="{{ blog.image.url }}"
+                                       class="image-popup">
+                                        <img src="{{ blog.image.url }}"
+                                             class="img-fluid work-image" alt="">
+                                    </a>
+                                </div>
 
-                    <div class="col-lg-4 col-12">
-                        <div class="work-thumb mb-4">
-                            <div class="work-image-wrap">
-                                <a href="{% static 'images/work/anthony-espinosa-pYQSM-p_0_c-unsplash.jpg' %}" class="image-popup">
-                                    <img src="{% static 'images/work/anthony-espinosa-pYQSM-p_0_c-unsplash.jpg' %}"
-                                         class="img-fluid work-image" alt="">
-                                </a>
-                            </div>
-
-                            <div class="work-text-info">
-                                <small class="work-tag bg-white shadow-lg">Art Direction</small>
-
-                                <h4 class="work-title">Simple Burger</h4>
-                            </div>
-                        </div>
-
-                        <div class="work-thumb mb-4">
-                            <div class="work-image-wrap">
-                                <a href="{% static 'images/work/samantha-gades-lf2pD--wIUA-unsplash.jpg' %}" class="image-popup">
-                                    <img src="{% static 'images/work/samantha-gades-lf2pD--wIUA-unsplash.jpg' %}"
-                                         class="img-fluid work-image" alt="">
-                                </a>
-                            </div>
-
-                            <div class="work-text-info">
-                                <small class="work-tag bg-white shadow-lg">Design</small>
-
-                                <h4 class="work-title">Fitness</h4>
+                                <div class="work-text-info">
+                                    {% comment %}
+                                    <small class="work-tag bg-white shadow-lg">Art Direction</small>
+                                    {% endcomment %}
+                                    <h4 class="work-title">{{ blog.title }}</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12">
-                        <div class="work-thumb mb-4">
-                            <div class="work-image-wrap">
-                                <a href="{% static 'images/work/business-chart-visual-graphics-report-concept.jpg' %}"
-                                   class="image-popup">
-                                    <img src="{% static 'images/work/business-chart-visual-graphics-report-concept.jpg' %}"
-                                         class="img-fluid work-image" alt="">
-                                </a>
-                            </div>
-
-                            <div class="work-text-info">
-                                <small class="work-tag bg-white shadow-lg">Web Development</small>
-
-                                <h4 class="work-title">Data Science</h4>
-                            </div>
-                        </div>
-
-                        <div class="work-thumb mb-4">
-                            <div class="work-image-wrap">
-                                <a href="{% static 'images/work/tyler-nix-HmVQh_EQJhY-unsplash.jpg' %}" class="image-popup">
-                                    <img src="{% static 'images/work/tyler-nix-HmVQh_EQJhY-unsplash.jpg' %}"
-                                         class="img-fluid work-image" alt="">
-                                </a>
-                            </div>
-
-                            <div class="work-text-info">
-                                <small class="work-tag bg-white shadow-lg">Branding</small>
-
-                                <small class="work-tag bg-white shadow-lg">Graphic Design</small>
-
-                                <h4 class="work-title">Health</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12">
-                        <div class="work-thumb mb-4">
-                            <div class="work-image-wrap">
-                                <a href="{% static 'images/work/mos-sukjaroenkraisri-jz8AmJDyhig-unsplash.jpg' %}" class="image-popup">
-                                    <img src="{% static 'images/work/mos-sukjaroenkraisri-jz8AmJDyhig-unsplash.jpg' %}"
-                                         class="img-fluid work-image" alt="">
-                                </a>
-                            </div>
-
-                            <div class="work-text-info">
-                                <small class="work-tag bg-white shadow-lg">Photography</small>
-
-                                <h4 class="work-title">Portraits</h4>
-                            </div>
-                        </div>
-
-                        <div class="work-thumb work-thumb-text">
-                            <div class="">
-                                <p class="work-title">If you are interested in working together, Say Hi at <strong><a
-                                        href="#">hi@company.com</a></strong></p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                 </div>
             </div>

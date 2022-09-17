@@ -40,27 +40,14 @@
                                  aria-labelledby="nav-intro-tab">
                                 <div class="row">
                                     <div class="col-lg-6 col-12 mb-lg-0 mb-4">
-                                        <img src="{% static 'images/webpage-browser-digital-icon-symbols-concept.jpg' %}"
+                                        <img src="{{ about.image.url }}"
                                              class="img-fluid" alt="">
                                     </div>
 
                                     <div class="col-lg-5 col-12 m-auto">
-                                        <h3 class="mb-3">Brand Creation</h3>
+                                        <h3 class="mb-3">{{ about.title }}</h3>
 
-                                        <p>We want you to be happy with our Tween Agency services. Our digital agency is
-                                            ready to serve you to grow your business in a healthy way.</p>
-
-                                        <p>This is Bootstrap 5 HTML template for your website provided by <a
-                                                rel="nofollow" href="https://www.tooplate.com/"
-                                                target="_blank">Tooplate</a>. You can download, edit and use this layout
-                                            for your company website.</p>
-
-                                        <p>Image credits go to <a rel="nofollow" href="https://freepik.com/"
-                                                                  target="_blank">FreePik</a> and <a rel="nofollow"
-                                                                                                     href="https://unsplash.com/"
-                                                                                                     target="_blank">Unsplash</a>
-                                            for images used in this template. We really appreciate these stock image
-                                            websites for providing free photos to everyone.</p>
+                                        <p class="mb-4">{{ about.description|safe }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +56,11 @@
                                  aria-labelledby="nav-profile-tab">
                                 <div class="row">
                                     <div class="col-lg-5 col-12 m-auto">
-                                        <h3 class="mb-3">Marie Smarty, CEO</h3>
+                                        <h3 class="mb-3">{{ hr.title }}</h3>
 
-                                        <p>Our priority is your happiness working together with us. We guarantee you the
-                                            best service quality from us. Feel free to talk to us via email, twitter, or
-                                            linkedin.</p>
+                                        <p>{{ hr.description|safe }}</p>
 
+                                        {% comment %}
                                         <ul class="social-icon mt-lg-5 mt-3">
                                             <li class="me-3"><strong>Where to find?</strong></li>
 
@@ -85,10 +71,11 @@
 
                                             <li><a href="#" class="social-icon-link bi-envelope"></a></li>
                                         </ul>
+                                        {% endcomment %}
                                     </div>
 
                                     <div class="col-lg-6 col-12 mt-lg-0 mt-4">
-                                        <img src="{% static 'images/dream-about-working-corporation-became-true.jpg' %}"
+                                        <img src="{{ hr.image.url }}"
                                              class="img-fluid" alt="">
                                     </div>
                                 </div>
@@ -103,80 +90,29 @@
 
                                     <div class="col-lg-5 col-12 m-auto">
                                         <h3 class="mb-3">Frequenlty Asked Questions</h3>
-
                                         <div class="accordion" id="accordionGeneral">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#accordionGeneralOne" aria-expanded="true"
-                                                            aria-controls="accordionGeneralOne">
-                                                        What is Tween Agency?
-                                                    </button>
-                                                </h2>
+                                            {% for faq in faqs %}
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="heading{{ faq.id }}">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#accordionGeneralOne"
+                                                                aria-expanded="true"
+                                                                aria-controls="accordionGeneralOne">
+                                                            {{ faq.question }}
+                                                        </button>
+                                                    </h2>
 
-                                                <div id="accordionGeneralOne" class="accordion-collapse collapse"
-                                                     aria-labelledby="headingOne" data-bs-parent="#accordionGeneral">
+                                                    <div id="accordionGeneralOne" class="accordion-collapse collapse"
+                                                         aria-labelledby="heading{{ faq.id }}"
+                                                         data-bs-parent="#accordionGeneral">
 
-                                                    <div class="accordion-body">
-                                                        <p class="large-paragraph"><strong>Tween Agency</strong> is free
-                                                            HTML template powered by Bootstrap 5 CSS framework. This
-                                                            means you can use all standard CSS classes provided by
-                                                            Bootstrap version 5 to customize your CSS layout.</p>
-
-                                                        <p class="large-paragraph">You are allowed to use it for your
-                                                            clients. You are not allowed to redistribute this template
-                                                            ZIP file on any other template website. Please <a
-                                                                    href="https://www.tooplate.com/contact"
-                                                                    target="_blank"><strong>contact
-                                                                Tooplate</strong></a> for more info.</p>
+                                                        <div class="accordion-body">
+                                                            {{ faq.answer|safe }}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#accordionGeneralTwo" aria-expanded="false"
-                                                            aria-controls="accordionGeneralTwo">
-                                                        What are available services?
-                                                    </button>
-                                                </h2>
-
-                                                <div id="accordionGeneralTwo" class="accordion-collapse collapse"
-                                                     aria-labelledby="headingTwo" data-bs-parent="#accordionGeneral">
-
-                                                    <div class="accordion-body">
-                                                        <p class="large-paragraph">We provide full digital marketing
-                                                            services for all various aspects of your company's web
-                                                            presence and social medias. You have 100% peace of mind for
-                                                            your company by working with us.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#accordionGeneralThree"
-                                                            aria-expanded="false" aria-controls="accordionGeneralThree">
-                                                        How many successful projects?
-                                                    </button>
-                                                </h2>
-
-                                                <div id="accordionGeneralThree" class="accordion-collapse collapse"
-                                                     aria-labelledby="headingThree" data-bs-parent="#accordionGeneral">
-
-                                                    <div class="accordion-body">
-                                                        <p class="large-paragraph">We have over 280+ successful projects
-                                                            for different companies. There are great experiences of
-                                                            working together with different clients all over the
-                                                            world.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% endfor %}
 
                                         </div>
                                     </div>
