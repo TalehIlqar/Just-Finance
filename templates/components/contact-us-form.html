@@ -66,8 +66,12 @@
             }
         }).then(response => response.json())
             .then(data => {
-                document.getElementById('contact-form').reset();
-                alert('Thank you for contacting us. We will get back to you shortly.');
+                if (data.status === 'success') {
+                    alert('Thank you for your message. We will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    alert('Message failed to send.');
+                }
             })
     }
 
