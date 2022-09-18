@@ -9,4 +9,4 @@ api = NinjaAPI()
 @api.post("/contact")
 def contact(request, payload: ContactSchema):
     Contact.objects.create(**payload.dict())
-    return {"message": "success"}
+    return {"status": "success", "message": "Contact created successfully."}
