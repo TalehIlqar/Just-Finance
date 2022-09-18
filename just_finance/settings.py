@@ -33,7 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'suit',
+    'semantic_admin',
+    'modeltranslation',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',

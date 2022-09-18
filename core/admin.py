@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ
 
+
 @admin.register(Blog)
 class AdminBlog(admin.ModelAdmin):
     list_display = ('title', 'description', 'image')
@@ -50,5 +51,3 @@ class AdminContact(admin.ModelAdmin):
 class AdminFAQ(admin.ModelAdmin):
     list_display = ('question', 'answer')
     search_fields = ('question',)
-
-

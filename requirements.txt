@@ -12,7 +12,7 @@ django-modeltranslation==0.17.6
 django-multiselectfield==0.1.12
 django-ninja==0.19.1
 django-rosetta==0.9.8
-django-suit-labrin==2.0a1
+django-semantic-admin==0.3.2
 djangorestframework==3.13.1
 idna==3.3
 Pillow==9.1.0
