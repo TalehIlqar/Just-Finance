@@ -1,0 +1,7 @@
+location /static/ {
+    alias /just_finance/static/
+}
+
+location /media/ {
+    alias /just_finance/media/
+}
