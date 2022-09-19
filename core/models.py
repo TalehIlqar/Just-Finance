@@ -87,6 +87,13 @@ class ApplicationCategory(Base_models):
         return self.title
 
 
+class Subscriber(Base_models):
+    email = models.EmailField(max_length=200, verbose_name=_('Email'))
+
+    def __str__(self):
+        return self.email
+
+
 class Settings(Base_models):
     slogan = models.CharField(max_length=200, verbose_name=_('Slogan'))
     logo = models.ImageField(upload_to='logo/', blank=True, null=True, verbose_name=_('Logo'))
