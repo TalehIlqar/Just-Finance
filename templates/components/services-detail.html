@@ -1,0 +1,37 @@
+{% load static %}
+<section class="services section-padding" id="section_3">
+    <div class="container">
+        <div class="row">
+
+            <h2 class="mb-5 text-center">Digital Services</h2>
+
+            {% for service in services %}
+                <div class="random-bg col-lg-4 col-12 d-flex p-0">
+                    <img src="{{ service.image.url }}"
+                         class="img-fluid services-image"
+                         alt="">
+                </div>
+
+                <div class="col-lg-4 col-12 p-0">
+                    <div class="services-info custom-icon-left paddingText">
+
+                        <h4 class="">{{ service.title }}</h4>
+
+                        <p class="mb-4">{{ service.description|truncatechars:100|safe }}</p>
+
+                        <a class="custom-btn custom-bg-dark btn" href="#">Learn More</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<script>
+    randomBg = document.querySelectorAll('.random-bg');
+    randomBg.forEach(function (item) {
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        item.style.backgroundColor = "#" + randomColor;
+    });
+</script>

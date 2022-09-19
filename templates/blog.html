@@ -5,36 +5,7 @@
 {% block content %}
 
     <main>
-        <section class="work section-padding" id="section_4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="mb-5 text-center">Blogs</h2>
-                    </div>
-                    {% for blog in blogs %}
-                        <div class="col-lg-4 col-12">
-                            <div class="work-thumb mb-4">
-                                <div class="work-image-wrap">
-                                    <a href="{{ blog.image.url }}"
-                                       class="image-popup">
-                                        <img src="{{ blog.image.url }}"
-                                             class="img-fluid work-image" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="work-text-info">
-                                    {% comment %}
-                                    <small class="work-tag bg-white shadow-lg">Art Direction</small>
-                                    {% endcomment %}
-                                    <h4 class="work-title">{{ blog.title }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                </div>
-            </div>
-        </section>
+        {% include 'components/blogs-detail.html' %}
     </main>
 
 
