@@ -9,9 +9,9 @@
                 <div class="col-lg-4 col-12">
                     <div class="work-thumb mb-4">
                         <div class="work-image-wrap">
-                            <a href="{{ blog.image.url }}"
+                            <a href="{% if blog.image.url %} {{ blog.image.url }} {% endif %}"
                                class="image-popup">
-                                <img src="{{ blog.image.url }}"
+                                <img src="{% if blog.image.url %} {{ blog.image.url }} {% endif %}"
                                      class="img-fluid work-image" alt="">
                             </a>
                         </div>

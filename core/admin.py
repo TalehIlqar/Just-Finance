@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ
+from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Settings
 
 
 @admin.register(Blog)
@@ -51,3 +51,21 @@ class AdminContact(admin.ModelAdmin):
 class AdminFAQ(admin.ModelAdmin):
     list_display = ('question', 'answer')
     search_fields = ('question',)
+
+
+@admin.register(ApplicationCategory)
+class AdminApplicationCategory(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+
+
+@admin.register(Settings)
+class AdminSettings(admin.ModelAdmin):
+    list_display = ('slogan',)
+    search_fields = ('slogan',)
+
+    def has_add_permission(self, request):
+        return super().has_add_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return False

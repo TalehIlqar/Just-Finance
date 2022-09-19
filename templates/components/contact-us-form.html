@@ -3,13 +3,13 @@
         <div class="row">
 
             <div class="col-lg-8 col-md-10 col-12 mx-auto">
-                <h2 class="mb-4 text-center">Let's chat</h2>
+                <h2 class="mb-4 text-center">Bizə yazın</h2>
 
                 <form class="custom-form" role="form" id="contact-form" action="" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-12 my-2">
-                            <label class="mb-2" for="name">Full Name</label>
+                            <label class="mb-2" for="name">Tam ad</label>
 
                             <input type="text" name="name" id="name" class="form-control" required="">
                         </div>
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="col-12 my-2">
-                            <label class="mb-2" for="message">Tell us about the project</label>
+                            <label class="mb-2" for="message">Ətraflı fikirlərinizi təsvir edin</label>
 
                             <textarea class="form-control" rows="5" id="message" name="message"></textarea>
 

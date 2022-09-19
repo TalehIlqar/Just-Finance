@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 
-from core.models import About, HR, FAQ, Service, Blog
+from core.models import About, HR, FAQ, Service, Blog, Settings
 
 
 # Create your views here.
@@ -15,6 +15,7 @@ def index(request):
         "faqs": FAQ.objects.all(),
         "services": Service.objects.all(),
         "blogs": Blog.objects.all(),
+        "settings": Settings.objects.last(),
     }
     return render(request, "index.html", context)
 
