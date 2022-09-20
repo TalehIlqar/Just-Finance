@@ -4,7 +4,7 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 
 from api.serializers import SubscriberSerializer
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 # Create your views here.
 
 

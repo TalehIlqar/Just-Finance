@@ -1,7 +1,8 @@
+import email
 from ninja import Schema
 
 
 class ContactSchema(Schema):
     name: str
-    number: str
+    email: str
     subject: str
