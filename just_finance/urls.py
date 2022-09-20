@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('metal/', admin.site.urls),
     path("", include("core.urls")),
-    # path("api/", include("api.urls")), # circular import error verir
+    path("", include("api.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 
@@ -30,4 +30,3 @@ if settings.DEBUG:
                           document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
-

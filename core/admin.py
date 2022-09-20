@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Settings
+from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Settings, Subscriber
 
 
 @admin.register(Blog)
@@ -69,3 +69,9 @@ class AdminSettings(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(Subscriber)
+class AdminSubscriber(admin.ModelAdmin):
+    list_display = ('email',)
+    search_fields = ('email',)

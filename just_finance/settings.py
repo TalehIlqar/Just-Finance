@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core',
     'api',
     'ninja',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,6 @@ WSGI_APPLICATION = 'just_finance.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",

@@ -5,11 +5,12 @@
             <div class="col-lg-5 col-12 me-auto mb-4">
                 <h5 class="text-white mb-3" id="subscribeModalLongTitle">Newsletter</h5>
 
-                <form class="custom-form subscribe-form mt-4" role="form">
+                <form class="custom-form subscribe-form mt-4" role="form" method="post">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-7">
                             <input type="email" id="emailinput" name="subscribe-email"
-                                   class="form-control" placeholder="Sənin mail addresin" >
+                                   class="form-control" placeholder="Your email address">
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-5">
@@ -73,42 +74,45 @@
 </footer>
 
 <script>
-console.log("Hello World");
-const SubsciberLogic = {
-	emailManager(email) {
-        console.log(email);
-		fetch('/api/subscriberapi/', {
-			method: 'POST',
-			credentials: 'include',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				'email': email,
-			})
-		})
-			.then(response => response.json())
-			.then(data => {
-                console.log("hallo");
-				subscribeModalLongTitle = document.getElementById('subscribeModalLongTitle');
-				if (data['success'] === true) {
-					emailinput.value = '';
-					emailinput.placeholder = 'Enter your email';
-					subscribeModalLongTitle.innerText = data['message'];
-				} else {
-					subscribeModalLongTitle.innerText = data['email'][0];
-				}
-			});
-	}
-}
+    console.log("Hello World");
+    const SubsciberLogic = {
+        emailManager(email) {
+            console.log(email);
+            fetch('/subscriber/', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    'email': email,
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("hallo");
+                    subscribeModalLongTitle = document.getElementById('subscribeModalLongTitle');
+                    if (data['success'] === true) {
+                        emailinput.value = '';
+                        emailinput.placeholder = 'Enter your email';
+                        subscribeModalLongTitle.innerText = data['message'];
+                    } else {
+                        subscribeModalLongTitle.innerText = data['email'][0];
+                    }
+                });
+        }
+    }
 
-emailbutton = document.getElementById('emailbutton')
-emailinput = document.getElementById('emailinput')
+    emailbutton = document.getElementById('emailbutton')
+    emailinput = document.getElementById('emailinput')
 
-emailbutton.onclick = function () {
-	const email = emailinput.value;
-	SubsciberLogic.emailManager(email);
-}
+    emailbutton.onclick = function (e) {
+        e.preventDefault();
+        console.log('clicked');
+        const email = emailinput.value;
+        SubsciberLogic.emailManager(email);
+    }
 
 </script>
 

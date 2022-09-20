@@ -1,4 +1,6 @@
 from django.urls import path
-from . import views
+from .views import SubscriberAPIView
 
-path('subscriberapi/', views.SubscriberAPIView.as_view(), name='subscriberapi'),
+urlpatterns = [
+    path('subscriber/', SubscriberAPIView.as_view(), name='subscriberapi'),
+]
