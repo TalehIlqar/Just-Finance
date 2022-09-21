@@ -25,10 +25,13 @@
                             <label class="mb-2" for="subject">How did you know about us?</label>
 
                             <select class="form-select form-control" name="subject" id="subject">
-                                <option selected="">Choose a subject</option>
+                                {% for subject in applicationcategory %}
+                                    <option value="{{ subject }}">{{ subject }}</option>
+                                {% endfor %}
+                                <!-- <option selected="">Choose a subject</option>
                                 <option value="web+search">Website Searches</option>
                                 <option value="social+media">Social Media</option>
-                                <option value="others">Others</option>
+                                <option value="others">Others</option> -->
                             </select>
                         </div>
 

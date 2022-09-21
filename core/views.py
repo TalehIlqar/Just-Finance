@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 
-from core.models import About, HR, FAQ, Service, Blog, Settings
+from django.views.generic import DetailView
+
+from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Settings
 
 
 # Create your views here.
@@ -13,8 +15,9 @@ def index(request):
         "about": About.objects.last(),
         "hr": HR.objects.last(),
         "faqs": FAQ.objects.all(),
-        "services": Service.objects.all(),
-        "blogs": Blog.objects.all(),
+        "services": Service.objects.all()[:3],
+        "blogs": Blog.objects.all()[:3],
+        "applicationcategory" : ApplicationCategory.objects.all(),
         "settings": Settings.objects.last(),
     }
     return render(request, "index.html", context)
@@ -33,6 +36,7 @@ def about(request):
 def contact(request):
     context = {
         "title": _("Contact"),
+        "applicationcategory" : ApplicationCategory.objects.all(),
     }
     return render(request, "contact.html", context)
 
@@ -45,9 +49,34 @@ def services(request):
     return render(request, "service.html", context)
 
 
+def service_detail(request, pk):
+    context = {
+        "title": _("Service Detail"),
+        "service": Service.objects.get(pk=pk),
+    }
+    return render(request, "service_detail.html", context)
+
+# class ServiceDetail(DetailView):
+#     model = Service
+#     print("ServiceDetail neter")
+#     template_name = 'templates/components/detail-servis.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = self.object.title
+#         return context
+
 def blog(request):
     context = {
         "title": _("Blog"),
         "blogs": Blog.objects.all(),
     }
     return render(request, "blog.html", context)
+
+
+# def blog_detail(request, slug):
+#     context = {
+#         "title": _("Blog Detail"),
+#         "blog": Blog.objects.get(slug=slug),
+#     }
+#     return render(request, "blog-detail.html", context)

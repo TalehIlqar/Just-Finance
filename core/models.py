@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 
 
 from core.tools.base_models import Base_models
+from core.tools.slug import slugify
 
 # Create your models here.
 
@@ -13,18 +14,30 @@ class Blog(Base_models):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = RichTextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='blog/', blank=True, null=True, verbose_name=_('Image'))
+    slug = models.SlugField(max_length=200, unique=True, verbose_name=_('Slug'))
 
     def __str__(self):
         return self.title
-
+    
+    def save(self, *args, **kwargs):
+        # self.__set_slug__()
+        from datetime import datetime
+        self.slug = slugify(self.title + ' ' + str(datetime.now()))
+        return super().save(*args, **kwargs)
 
 class Service(Base_models):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = RichTextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='service/', blank=True, null=True, verbose_name=_('Image'))
+    slug = models.SlugField(max_length=200, unique=True, verbose_name=_('Slug'), blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        from datetime import datetime
+        self.slug = slugify(self.title + ' ' + str(datetime.now()))
+        return super().save(*args, **kwargs)
 
 
 class Finance(Base_models):
