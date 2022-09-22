@@ -54,7 +54,7 @@ def service_detail(request, pk):
         "title": _("Service Detail"),
         "service": Service.objects.get(pk=pk),
     }
-    return render(request, "components/detail-servis.html", context)
+    return render(request, "components/../templates/service-detail.html", context)
 
 
 def blog(request):
@@ -70,4 +70,4 @@ def blog_detail(request, slug):
         "title": _("Blog Detail"),
         "blog": Blog.objects.get(slug=slug),
     }
-    return render(request, "components/blogs-detail.html", context)
+    return render(request, "components/../templates/blog-detail.html", context)

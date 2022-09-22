@@ -1,10 +1,9 @@
-
 from django.db import models
 
 
-class Base_models(models.Model):
+class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # class Meta:
-    #     abstract = True
+    class Meta:
+        abstract = True

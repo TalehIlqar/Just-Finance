@@ -13,7 +13,7 @@
 
                     <div class="col-lg-8 col-12">
                         <div class="heroText">
-                            <h1 class="text-white mb-lg-5 mb-4">{{settings.slogan}}</h1>
+                            <h1 class="text-white mb-lg-5 mb-4">{{ settings.slogan }}</h1>
 
                             <!-- <a href="https://www.youtube.com/watch?v=AYaHuZ4BB6Y"
                                class="popup-youtube play-icon-wrap d-flex align-items-center">
@@ -29,9 +29,9 @@
 
             <div class="overlay"></div>
         </section>
-        {% include 'components/about-detail.html' %}
-        {% include 'components/services.html' %}
-        {% include 'components/blogs-detail.html' %}
+        {% include 'components/about-section.html' %}
+        {% include 'components/services-section.html' %}
+        {% include 'components/blog-detail.html' %}
         <section class="pricing section-padding" id="section_5">
             <div class="container">
                 <div class="row">
@@ -110,7 +110,7 @@
             </div>
             <div class="overlay dark-overlay"></div>
         </section>
-        {% include 'components/contact-us-form.html' %}
+        {% include 'components/contact-form.html' %}
     </main>
 
 {% endblock %}
