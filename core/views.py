@@ -46,15 +46,15 @@ def services(request):
         "title": _("Services"),
         "services": Service.objects.all(),
     }
-    return render(request, "service.html", context)
+    return render(request, "services.html", context)
 
 
-def service_detail(request, pk):
+def service_detail(request, slug):
     context = {
         "title": _("Service Detail"),
-        "service": Service.objects.get(pk=pk),
+        "service": Service.objects.get(slug=slug),
     }
-    return render(request, "components/../templates/service-detail.html", context)
+    return render(request, "service-detail.html", context)
 
 
 def blog(request):
@@ -62,7 +62,7 @@ def blog(request):
         "title": _("Blog"),
         "blogs": Blog.objects.all(),
     }
-    return render(request, "blog.html", context)
+    return render(request, "blogs.html", context)
 
 
 def blog_detail(request, slug):
@@ -70,4 +70,4 @@ def blog_detail(request, slug):
         "title": _("Blog Detail"),
         "blog": Blog.objects.get(slug=slug),
     }
-    return render(request, "components/../templates/blog-detail.html", context)
+    return render(request, "blog-detail.html", context)

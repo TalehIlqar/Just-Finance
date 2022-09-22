@@ -1,0 +1,27 @@
+{% load static %}
+<section class="work section-padding" id="section_4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-5 text-center">Blogs</h2>
+            </div>
+            {% for blog in blogs %}
+                <div class="col-lg-4 col-12">
+                    <div class="work-thumb mb-4">
+                        <div class="work-image-wrap">
+                            <a class="stretched-link" href="{% url 'blog_detail' blog.slug %}">
+                                <img src="{% if blog.image.url %} {{ blog.image.url }} {% endif %}"
+                                     class="img-fluid work-image" alt="">
+                            </a>
+                        </div>
+
+                        <div class="work-text-info">
+                            <h4 class="work-title">{{ blog.title }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

@@ -2,7 +2,7 @@
     <div class="container">
 
         <a href="/" class="navbar-brand">
-            <img src="{{settings.logo.url}}" alt="" width="50px"> Just finance
+            <img src="{{ settings.logo.url }}" alt="" width="50px"> Just finance
         </a>
 
         <!-- <a href="/contact" class="custom-btn btn btn-lg d-lg-none ms-auto me-4">
@@ -18,19 +18,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/services">Services</a>
+                    <a class="nav-link" href="{% url 'services' %}">Services</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog">Blog</a>
+                    <a class="nav-link" href="{% url 'blogs' %}">Blog</a>
                 </li>
 
                 <li class="nav-item">
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
 
