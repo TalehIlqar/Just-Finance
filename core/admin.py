@@ -9,14 +9,14 @@ from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, Applic
 class AdminBlog(admin.ModelAdmin):
     list_display = ('title', 'description', 'image')
     search_fields = ('title',)
-    readonly_fields = ('slug',)
+    exclude = ('slug',)
 
 
 @admin.register(Service)
 class AdminService(admin.ModelAdmin):
     list_display = ('title', 'description', 'image')
     search_fields = ('title',)
-    readonly_fields = ('slug',)
+    exclude = ('slug',)
 
 
 @admin.register(Finance)

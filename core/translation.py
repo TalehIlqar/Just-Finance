@@ -1,6 +1,7 @@
 from modeltranslation.translator import translator, TranslationOptions
 from .models import About, Blog, Contact, FAQ, Finance, HR, Service, Tax, ApplicationCategory, Settings
 
+
 class AboutUsTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
@@ -51,4 +52,3 @@ translator.register(Service, ServiceTranslationOptions)
 translator.register(Tax, TaxTranslationOptions)
 translator.register(ApplicationCategory, ApplicationCategoryTranslationOptions)
 translator.register(Settings, SettingsTranslationOptions)
-

@@ -61,6 +61,10 @@ class Tax(BaseModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _("Tax")
+        verbose_name_plural = _("Taxes")
+
 
 class HR(BaseModel):
     title = models.CharField(max_length=200, verbose_name=_("Title"))
@@ -107,6 +111,10 @@ class ApplicationCategory(BaseModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _("Application Category")
+        verbose_name_plural = _("Application Categories")
+
 
 class Subscriber(BaseModel):
     email = models.EmailField(max_length=200, verbose_name=_("Email"))
@@ -139,3 +147,7 @@ class Settings(BaseModel):
 
     def __str__(self):
         return "Settings"
+
+    class Meta:
+        verbose_name = _("Settings")
+        verbose_name_plural = _("Settings")
