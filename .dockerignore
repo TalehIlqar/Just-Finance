@@ -1,0 +1,10 @@
+.venv/
+.idea/
+redisdb/
+*.pyc
+*.log
+docker_db
+media
+apps/db.sqlite3
+apps/media
+.git
