@@ -17,7 +17,7 @@ def index(request):
         "faqs": FAQ.objects.all(),
         "services": Service.objects.all()[:3],
         "blogs": Blog.objects.all()[:3],
-        "applicationcategory" : ApplicationCategory.objects.all(),
+        "applicationcategory": ApplicationCategory.objects.all(),
         "settings": Settings.objects.last(),
     }
     return render(request, "index.html", context)
@@ -36,7 +36,7 @@ def about(request):
 def contact(request):
     context = {
         "title": _("Contact"),
-        "applicationcategory" : ApplicationCategory.objects.all(),
+        "applicationcategory": ApplicationCategory.objects.all(),
     }
     return render(request, "contact.html", context)
 
@@ -54,17 +54,8 @@ def service_detail(request, pk):
         "title": _("Service Detail"),
         "service": Service.objects.get(pk=pk),
     }
-    return render(request, "service_detail.html", context)
+    return render(request, "components/detail-servis.html", context)
 
-# class ServiceDetail(DetailView):
-#     model = Service
-#     print("ServiceDetail neter")
-#     template_name = 'templates/components/detail-servis.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = self.object.title
-#         return context
 
 def blog(request):
     context = {
@@ -74,9 +65,9 @@ def blog(request):
     return render(request, "blog.html", context)
 
 
-# def blog_detail(request, slug):
-#     context = {
-#         "title": _("Blog Detail"),
-#         "blog": Blog.objects.get(slug=slug),
-#     }
-#     return render(request, "blog-detail.html", context)
+def blog_detail(request, slug):
+    context = {
+        "title": _("Blog Detail"),
+        "blog": Blog.objects.get(slug=slug),
+    }
+    return render(request, "components/blogs-detail.html", context)

@@ -4,9 +4,9 @@ from django.utils.translation import gettext_lazy as _
 # from django.utils.translation import gettext as _
 from ckeditor.fields import RichTextField
 
-
 from core.tools.base_models import Base_models
 from core.tools.slug import slugify
+
 
 # Create your models here.
 
@@ -14,21 +14,24 @@ class Blog(Base_models):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = RichTextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='blog/', blank=True, null=True, verbose_name=_('Image'))
+
     slug = models.SlugField(max_length=200, unique=True, verbose_name=_('Slug'))
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         # self.__set_slug__()
         from datetime import datetime
         self.slug = slugify(self.title + ' ' + str(datetime.now()))
         return super().save(*args, **kwargs)
 
+
 class Service(Base_models):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = RichTextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='service/', blank=True, null=True, verbose_name=_('Image'))
+
     slug = models.SlugField(max_length=200, unique=True, verbose_name=_('Slug'), blank=True, null=True)
 
     def __str__(self):
@@ -71,7 +74,7 @@ class About(Base_models):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     description = RichTextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='about/', blank=True, null=True, verbose_name=_('Image'))
-    
+
     def __str__(self):
         return self.title
 
@@ -110,7 +113,8 @@ class Subscriber(Base_models):
 class Settings(Base_models):
     slogan = models.CharField(max_length=200, verbose_name=_('Slogan'))
     logo = models.ImageField(upload_to='logo/', blank=True, null=True, verbose_name=_('Logo'))
-    default_image = models.ImageField(upload_to='default_image/', blank=True, null=True, verbose_name=_('Default Image'))
+    default_image = models.ImageField(upload_to='default_image/', blank=True, null=True,
+                                      verbose_name=_('Default Image'))
     default_number = models.CharField(max_length=200, verbose_name=_('Default Number'))
     default_email = models.CharField(max_length=200, verbose_name=_('Default Email'))
     default_address = models.CharField(max_length=200, verbose_name=_('Default Address'))
@@ -119,8 +123,6 @@ class Settings(Base_models):
     instagram = models.CharField(max_length=200, verbose_name=_('Instagram'))
     linkedin = models.CharField(max_length=200, verbose_name=_('Linkedin'))
     youtube = models.CharField(max_length=200, verbose_name=_('Youtube'))
-    
 
     def __str__(self):
         return "Settings"
-    
