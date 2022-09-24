@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'just_finance.middleware.LoggingMiddleware',
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
