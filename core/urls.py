@@ -10,4 +10,5 @@ urlpatterns = [
     path("services/<slug:slug>/", views.service_detail, name="service_detail"),
     path("blogs/<slug:slug>/", views.blog_detail, name="blog_detail"),
     path("blogs/", views.blog, name="blogs"),
+    path("set_language/<str:lang>/", views.set_language, name="set_language"),
 ]

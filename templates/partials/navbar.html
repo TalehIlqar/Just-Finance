@@ -1,14 +1,10 @@
+{% load i18n static %}
 <nav class="navbar fixed-top navbar-expand-lg {% if request.path != '/' %}navbar-light bg-light{% endif %}">
     <div class="container">
 
         <a href="/" class="navbar-brand">
             <img src="{{ settings.logo.url }}" alt="" width="50px"> {{ settings.sayt_name }}
         </a>
-
-        <!-- <a href="/contact" class="custom-btn btn btn-lg d-lg-none ms-auto me-4">
-            Bizimlə əlaqə
-
-        </a> -->
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,23 +14,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'index' %}">{% trans 'Home' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                    <a class="nav-link" href="{% url 'about' %}">{% trans 'About' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'services' %}">Services</a>
+                    <a class="nav-link" href="{% url 'services' %}">{% trans 'Services' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'blogs' %}">Blog</a>
+                    <a class="nav-link" href="{% url 'blogs' %}">{% trans 'Blog' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">{% trans 'Contact' %}</a>
                 </li>
             </ul>
 
@@ -42,6 +38,19 @@
                 <a href="#section_6" class="custom-btn btn btn-lg">
                     Bizə yazın
                 </a>
+            </div>
+            <div class="language" style="margin-left: 1rem">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    {% if language.code == LANGUAGE_CODE %}
+                        <a href="{% url 'set_language' language.code %}"
+                           style="color: #000000; font-weight: bold;">{{ language.code }}</a>
+                    {% else %}
+                        <a href="{% url 'set_language' language.code %}">{{ language.code }}</a>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

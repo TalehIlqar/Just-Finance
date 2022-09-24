@@ -1,6 +1,7 @@
+from django.conf import settings
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.utils.translation import gettext_lazy as _
-
+from django.utils.translation import activate, gettext_lazy as _
 from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Setting
 
 
@@ -66,3 +67,10 @@ def blog_detail(request, slug):
         "blog": Blog.objects.get(slug=slug),
     }
     return render(request, "pages/blog-detail.html", context)
+
+
+def set_language(request, lang):
+    response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
+    activate(lang)
+    return response

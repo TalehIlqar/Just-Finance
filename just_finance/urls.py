@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('metal/', admin.site.urls),
+    path('translation/', include('rosetta.urls')),
     path("", include("core.urls")),
     path("api/", include("core.api.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
