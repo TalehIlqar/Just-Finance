@@ -124,6 +124,7 @@ class Subscriber(BaseModel):
 
 
 class Settings(BaseModel):
+    name = models.CharField(max_length=200, verbose_name=_("Name"))
     slogan = models.CharField(max_length=200, verbose_name=_("Slogan"))
     logo = models.ImageField(
         upload_to="logo/", blank=True, null=True, verbose_name=_("Logo")
@@ -139,11 +140,11 @@ class Settings(BaseModel):
     default_address = models.CharField(
         max_length=200, verbose_name=_("Default Address")
     )
-    facebook = models.CharField(max_length=200, verbose_name=_("Facebook"))
-    twitter = models.CharField(max_length=200, verbose_name=_("Twitter"))
-    instagram = models.CharField(max_length=200, verbose_name=_("Instagram"))
-    linkedin = models.CharField(max_length=200, verbose_name=_("Linkedin"))
-    youtube = models.CharField(max_length=200, verbose_name=_("Youtube"))
+    facebook = models.CharField(max_length=200, verbose_name=_("Facebook"), blank=True)
+    whatsapp = models.CharField(max_length=200, verbose_name=_("Whatsapp"), blank=True)
+    instagram = models.CharField(max_length=200, verbose_name=_("Instagram"), blank=True)
+    linkedin = models.CharField(max_length=200, verbose_name=_("Linkedin"), blank=True)
+    youtube = models.CharField(max_length=200, verbose_name=_("Youtube"), blank=True)
 
     def __str__(self):
         return "Settings"
