@@ -1,3 +1,21 @@
-<p>
-    hello world
-</p>
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    <main>
+        <section class="work section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <h4 class="text-center">{{ service.title }}</h4>
+                            <p class="text-center">{{ service.description|safe }}</p>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

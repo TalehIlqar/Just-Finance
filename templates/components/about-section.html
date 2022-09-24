@@ -89,14 +89,14 @@
                                             <h2 class="accordion-header" id="heading{{ faq.id }}">
                                                 <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#accordionGeneralOne"
+                                                        data-bs-target="#accordionGeneralOne{{ faq.id }}"
                                                         aria-expanded="true"
-                                                        aria-controls="accordionGeneralOne">
+                                                        aria-controls="accordionGeneralOne{{ faq.id }}">
                                                     {{ faq.question }}
                                                 </button>
                                             </h2>
 
-                                            <div id="accordionGeneralOne" class="accordion-collapse collapse"
+                                            <div id="accordionGeneralOne{{ faq.id }}" class="accordion-collapse collapse"
                                                  aria-labelledby="heading{{ faq.id }}"
                                                  data-bs-parent="#accordionGeneral">
 

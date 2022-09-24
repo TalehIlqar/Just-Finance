@@ -1,5 +1,5 @@
 {% load static %}
-<!-- <section class="services section-padding" id="section_3">
+<section class="services section-padding" id="section_3">
     <div class="container">
         <div class="row">
 
@@ -19,7 +19,7 @@
 
                         <p class="mb-4">{{ service.description|truncatechars:100|safe }}</p>
 
-                        <a class="custom-btn custom-bg-dark btn" href="#">Learn More</a>
+                        <a class="custom-btn custom-bg-dark btn" href="{% url 'service_detail' service.slug %}">Learn More</a>
                     </div>
                 </div>
             {% endfor %}
@@ -34,8 +34,8 @@
         let randomColor = Math.floor(Math.random() * 16777215).toString(16);
         item.style.backgroundColor = "#" + randomColor;
     });
-</script> -->
-
+</script>
+<!-- 
 <section class="services section-padding" id="section_3">
     <div class="container">
         <div class="row">
@@ -53,4 +53,4 @@
             {% endfor %}
         </div>
     </div>
-</section>
+</section> -->
