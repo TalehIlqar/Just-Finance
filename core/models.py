@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.text import slugify
@@ -12,14 +14,15 @@ class Blog(BaseModel):
     image = models.ImageField(
         upload_to="blog/", blank=True, null=True, verbose_name=_("Image")
     )
-
+    is_pin = models.BooleanField(default=False, verbose_name=_("Is Pin"))
     slug = models.SlugField(max_length=200, unique=True, verbose_name=_("Slug"))
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title + str(self.id))
+        now = datetime.now()
+        self.slug = slugify(self.title + "-" + str(now.strftime("%Y%m%d%H%M%S")))
         super(Blog, self).save(*args, **kwargs)
 
 
@@ -36,7 +39,8 @@ class Service(BaseModel):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title + str(self.id))
+        now = datetime.now()
+        self.slug = slugify(self.title + "-" + str(now.strftime("%Y%m%d%H%M%S")))
         super(Service, self).save(*args, **kwargs)
 
 
@@ -90,8 +94,16 @@ class About(BaseModel):
 
 class Contact(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"))
-    number = models.CharField(max_length=200, verbose_name=_("Number"))
-    subject = models.CharField(max_length=200, verbose_name=_("Subject"))
+    phone_number = models.CharField(
+        max_length=200, blank=True, null=True, verbose_name=_("Phone Number")
+    )
+    category = models.ForeignKey(
+        "ApplicationCategory",
+        on_delete=models.CASCADE,
+        verbose_name=_("Category"),
+        related_name="contacts",
+    )
+    message = models.TextField(verbose_name=_("Message"))
 
     def __str__(self):
         return self.name
@@ -123,7 +135,7 @@ class Subscriber(BaseModel):
         return self.email
 
 
-class Settings(BaseModel):
+class Setting(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"))
     slogan = models.CharField(max_length=200, verbose_name=_("Slogan"))
     logo = models.ImageField(
@@ -148,7 +160,3 @@ class Settings(BaseModel):
 
     def __str__(self):
         return "Settings"
-
-    class Meta:
-        verbose_name = _("Settings")
-        verbose_name_plural = _("Settings")

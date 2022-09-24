@@ -1,5 +1,5 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import About, Blog, Contact, FAQ, Finance, HR, Service, Tax, ApplicationCategory, Settings
+from .models import About, Blog, Contact, FAQ, Finance, HR, Service, Tax, ApplicationCategory, Setting
 
 
 class AboutUsTranslationOptions(TranslationOptions):
@@ -8,10 +8,6 @@ class AboutUsTranslationOptions(TranslationOptions):
 
 class BlogTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
-
-
-class ContactTranslationOptions(TranslationOptions):
-    fields = ('name', 'number', 'subject')
 
 
 class FAQTranslationOptions(TranslationOptions):
@@ -44,11 +40,10 @@ class SettingsTranslationOptions(TranslationOptions):
 
 translator.register(About, AboutUsTranslationOptions)
 translator.register(Blog, BlogTranslationOptions)
-translator.register(Contact, ContactTranslationOptions)
 translator.register(FAQ, FAQTranslationOptions)
 translator.register(Finance, FinanceTranslationOptions)
 translator.register(HR, HRTranslationOptions)
 translator.register(Service, ServiceTranslationOptions)
 translator.register(Tax, TaxTranslationOptions)
 translator.register(ApplicationCategory, ApplicationCategoryTranslationOptions)
-translator.register(Settings, SettingsTranslationOptions)
+translator.register(Setting, SettingsTranslationOptions)

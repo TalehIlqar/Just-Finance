@@ -1,12 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 
-from django.views.generic import DetailView
-
-from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Settings
-
-
-# Create your views here.
+from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Setting
 
 
 def index(request):
@@ -18,9 +13,9 @@ def index(request):
         "services": Service.objects.all()[:3],
         "blogs": Blog.objects.all()[:3],
         "applicationcategory": ApplicationCategory.objects.all(),
-        "settings": Settings.objects.last(),
+        "settings": Setting.objects.last(),
     }
-    return render(request, "index.html", context)
+    return render(request, "pages/index.html", context)
 
 
 def about(request):
@@ -30,7 +25,7 @@ def about(request):
         "hr": HR.objects.last(),
         "faqs": FAQ.objects.all(),
     }
-    return render(request, "about.html", context)
+    return render(request, "pages/about.html", context)
 
 
 def contact(request):
@@ -38,7 +33,7 @@ def contact(request):
         "title": _("Contact"),
         "applicationcategory": ApplicationCategory.objects.all(),
     }
-    return render(request, "contact.html", context)
+    return render(request, "pages/contact.html", context)
 
 
 def services(request):
@@ -46,7 +41,7 @@ def services(request):
         "title": _("Services"),
         "services": Service.objects.all(),
     }
-    return render(request, "services.html", context)
+    return render(request, "pages/services.html", context)
 
 
 def service_detail(request, slug):
@@ -54,7 +49,7 @@ def service_detail(request, slug):
         "title": _("Service Detail"),
         "service": Service.objects.get(slug=slug),
     }
-    return render(request, "service-detail.html", context)
+    return render(request, "pages/service-detail.html", context)
 
 
 def blog(request):
@@ -62,7 +57,7 @@ def blog(request):
         "title": _("Blog"),
         "blogs": Blog.objects.all(),
     }
-    return render(request, "blogs.html", context)
+    return render(request, "pages/blogs.html", context)
 
 
 def blog_detail(request, slug):
@@ -70,4 +65,4 @@ def blog_detail(request, slug):
         "title": _("Blog Detail"),
         "blog": Blog.objects.get(slug=slug),
     }
-    return render(request, "blog-detail.html", context)
+    return render(request, "pages/blog-detail.html", context)

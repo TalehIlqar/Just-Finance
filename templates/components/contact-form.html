@@ -1,4 +1,4 @@
-<section class="section-padding" id="section_6">
+<section class="services section-padding" id="section_6">
     <div class="container">
         <div class="row">
 
@@ -9,34 +9,31 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-12 my-2">
-                            <label class="mb-2" for="name">Tam ad</label>
+                            <label class="mb-2" for="name">Full name</label>
 
                             <input type="text" name="name" id="name" class="form-control" required="">
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 my-2">
-                            <label class="mb-2" for="email">Email Address</label>
+                            <label class="mb-2" for="phone_number">Phone number</label>
 
-                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
+                            <input type="text" name="phone_number" id="phone_number"
+                                   class="form-control"
                                    required="">
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 my-2">
-                            <label class="mb-2" for="subject">How did you know about us?</label>
+                            <label class="mb-2" for="category">Category</label>
 
-                            <select class="form-select form-control" name="subject" id="subject">
+                            <select class="form-select form-control" name="category" id="category">
                                 {% for subject in applicationcategory %}
-                                    <option value="{{ subject }}">{{ subject }}</option>
+                                    <option value="{{ subject.id }}">{{ subject }}</option>
                                 {% endfor %}
-                                <!-- <option selected="">Choose a subject</option>
-                                <option value="web+search">Website Searches</option>
-                                <option value="social+media">Social Media</option>
-                                <option value="others">Others</option> -->
                             </select>
                         </div>
 
                         <div class="col-12 my-2">
-                            <label class="mb-2" for="message">Ətraflı fikirlərinizi təsvir edin</label>
+                            <label class="mb-2" for="message">Message</label>
 
                             <textarea class="form-control" rows="5" id="message" name="message"></textarea>
 
@@ -56,12 +53,13 @@
 
     function postContactForm(e) {
         e.preventDefault();
-        fetch('/contact/', {
+        fetch('/api/contact/', {
             method: 'POST',
             body: JSON.stringify({
-                name: 'name',
-                number: 'number',
-                subject: 'subject',
+                name: contactForm.name.value,
+                phone_number: contactForm.phone_number.value,
+                category: contactForm.category.value,
+                message: contactForm.message.value,
             }),
             headers: {
                 'X-CSRFToken': '{{ csrf_token }}',

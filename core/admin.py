@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Settings, Subscriber
+from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Setting, Subscriber
 
 
 @admin.register(Blog)
@@ -45,7 +45,7 @@ class AdminAbout(admin.ModelAdmin):
 
 @admin.register(Contact)
 class AdminContact(admin.ModelAdmin):
-    list_display = ('name', 'number')
+    list_display = ('name', 'phone_number', 'message')
     search_fields = ('name',)
 
 
@@ -61,7 +61,7 @@ class AdminApplicationCategory(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-@admin.register(Settings)
+@admin.register(Setting)
 class AdminSettings(admin.ModelAdmin):
     list_display = ('slogan',)
     search_fields = ('slogan',)

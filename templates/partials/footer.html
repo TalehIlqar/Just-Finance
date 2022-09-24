@@ -26,46 +26,61 @@
 
                 <ul class="footer-menu">
                     {% for service in footer_services %}
-                        <li class="footer-menu-item"><a href="{{ service.url }}" class="footer-menu-link">{{ service.title }}</a></li>
-                        
+                        <li class="footer-menu-item"><a href="{{ service.url }}"
+                                                        class="footer-menu-link">{{ service.title }}</a></li>
+
                         <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Creative Ideas</a></li> -->
-                        
+
                         <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Branding</a></li> -->
-                        
+
                         <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Video Contents</a></li> -->
                     {% endfor %}
                 </ul>
             </div>
 
             <div class="col-lg-2 col-12">
-                <h5 class="text-white mb-3">Say Hi</h5>
+                <h5 class="text-white mb-3">Company</h5>
 
-                <p class="text-white mb-1">{{default_address}}</p>
-                <p class="text-white mb-1">{{default_number}}</p>
+                <p class="text-white mb-1">{{ settings.default_address }}</p>
+                <p class="text-white mb-1">{{ settings.default_number }}</p>
 
-                <p><a href="mailto:just@finance.com" class="footer-link">{{default_email}}</a>
+                <p><a href="mailto:{{ default_email }}" class="footer-link">{{ settings.default_email }}</a>
                 <p>
             </div>
 
             <div class="site-footer-bottom mt-5">
                 <div class="row pt-4">
                     <div class="col-lg-6 col-12">
-                        <p class="copyright-text tooplate-link">Copyright © 2022 Metal Group.
+                        <p class="copyright-text tooplate-link">Copyright © {{ current_year }} Metal Group.
                             <!-- <br>Design: <a rel="nofollow" href="https://www.sapience.com/" target="_blank">Sapience</a> -->
                         </p>
                     </div>
 
                     <div class="col-lg-3 col-12 ms-auto">
                         <ul class="social-icon">
-                            {% if facebook %}<li><a href="{{facebook}}" target="_blank" class="social-icon-link bi-facebook"></a></li>{% endif %}
+                            {% if settings.facebook %}
+                                <li><a href="{{ settings.facebook }}" target="_blank"
+                                       class="social-icon-link bi-facebook"></a></li>{% endif %}
 
-                            {% if whatsapp %}<li><a href="{{whatsapp}}" target="_blank" class="social-icon-link bi-whatsapp"></a></li>{% endif %}
+                            {% if settings.whatsapp %}
+                                <li><a href="{{ settings.whatsapp }}" target="_blank"
+                                       class="social-icon-link bi-whatsapp"></a>
+                                </li>{% endif %}
 
-                            {% if instagram %}<li><a href="{{instagram}}" target="_blank" class="social-icon-link bi-instagram"></a></li>{% endif %}
+                            {% if settings.instagram %}
+                                <li><a href="{{ settings.instagram }}" target="_blank"
+                                       class="social-icon-link bi-instagram"></a>
+                                </li>{% endif %}
 
-                            {% if linkedin %}<li><a href="{{linkedin}}" target="_blank" class="social-icon-link bi-linkedin"></a></li>{% endif %}
+                            {% if settings.linkedin %}
+                                <li><a href="{{ settings.linkedin }}" target="_blank"
+                                       class="social-icon-link bi-linkedin"></a>
+                                </li>{% endif %}
 
-                            {% if youtube %}<li><a href="{{youtube}}" target="_blank" class="social-icon-link bi-youtube"></a></li>{% endif %}
+                            {% if settings.youtube %}
+                                <li><a href="{{ settings.youtube }}" target="_blank"
+                                       class="social-icon-link bi-youtube"></a>
+                                </li>{% endif %}
                         </ul>
                     </div>
                 </div>
@@ -76,11 +91,9 @@
 </footer>
 
 <script>
-    console.log("Hello World");
     const SubsciberLogic = {
         emailManager(email) {
-            console.log(email);
-            fetch('/subscriber/', {
+            fetch('/api/subscriber/', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -93,14 +106,12 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("hallo");
                     subscribeModalLongTitle = document.getElementById('subscribeModalLongTitle');
                     if (data['success'] === true) {
                         emailinput.value = '';
-                        emailinput.placeholder = 'Enter your email';
-                        subscribeModalLongTitle.innerText = data['message'];
+                        alert('You have successfully subscribed to our newsletter');
                     } else {
-                        subscribeModalLongTitle.innerText = data['email'][0];
+                        alert('Oops! Something went wrong. Please try again later.');
                     }
                 });
         }
@@ -111,11 +122,8 @@
 
     emailbutton.onclick = function (e) {
         e.preventDefault();
-        console.log('clicked');
         const email = emailinput.value;
         SubsciberLogic.emailManager(email);
     }
 
 </script>
-
-<!-- <script src="static/js/subscriber_email.js"></script> -->
