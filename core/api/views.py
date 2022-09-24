@@ -25,7 +25,6 @@ class ContactAPIView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request):
-        print(request.data)
         serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
