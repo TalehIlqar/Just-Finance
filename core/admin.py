@@ -19,16 +19,16 @@ class AdminService(admin.ModelAdmin):
     exclude = ('slug',)
 
 
-@admin.register(Finance)
-class AdminFinance(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image')
-    search_fields = ('title',)
+# @admin.register(Finance)
+# class AdminFinance(admin.ModelAdmin):
+#     list_display = ('title', 'description', 'image')
+#     search_fields = ('title',)
 
 
-@admin.register(Tax)
-class AdminTax(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image')
-    search_fields = ('title',)
+# @admin.register(Tax)
+# class AdminTax(admin.ModelAdmin):
+#     list_display = ('title', 'description', 'image')
+#     search_fields = ('title',)
 
 
 @admin.register(HR)
