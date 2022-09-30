@@ -3,7 +3,9 @@
     <div class="container">
 
         <a href="/" class="navbar-brand">
-            <img src="{{ settings.logo.url }}" alt="" width="50px"> {{ settings.sayt_name }}
+            {% if settings.logo %}
+                <img src="{{ settings.logo.url }}" alt="" width="50px"> {{ settings.sayt_name }}
+            {% endif %}
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

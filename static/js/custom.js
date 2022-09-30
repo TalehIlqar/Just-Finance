@@ -1,6 +1,5 @@
 
   (function ($) {
-  
   "use strict";
 
     // NAVBAR
@@ -19,11 +18,7 @@
     });
 
     // BACKSTRETCH SLIDESHOW
-    $('#section_1').backstretch([
-      "static/images/slide/microsoft-edge-FAaz8lkinzs-unsplash.jpg", 
-      "static/images/slide/surface-1x5jnhtlp3Y-unsplash.jpg",
-      "static/images/slide/surface-71_s6RDJpGc-unsplash.jpg"
-    ],  {duration: 2000, fade: 750});
+    $('#section_1').backstretch(backstretchImages,  {duration: 2000, fade: 750});
     
   })(window.jQuery);
 

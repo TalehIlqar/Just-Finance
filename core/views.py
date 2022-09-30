@@ -15,7 +15,7 @@ def index(request):
         "services": Service.objects.all()[:3],
         "blogs": Blog.objects.all()[:3],
         "applicationcategory": ApplicationCategory.objects.all(),
-        "settings": Setting.objects.last(),
+        "media_url": settings.MEDIA_URL,
     }
     return render(request, "pages/index.html", context)
 

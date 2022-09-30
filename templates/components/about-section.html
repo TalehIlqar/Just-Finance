@@ -55,17 +55,14 @@
                                 <p>{{ hr.description|safe }}</p>
 
                                 {% comment %}
-                                        <ul class="social-icon mt-lg-5 mt-3">
-                                            <li class="me-3"><strong>{% trans 'Where to find?' %}</strong></li>
-
-                                            <li><a href="#"
-                                                   class="social-icon-link bi-twitter"></a></li>
-
-                                            <li><a href="#" class="social-icon-link bi-linkedin"></a></li>
-
-                                            <li><a href="#" class="social-icon-link bi-envelope"></a></li>
-                                        </ul>
-                                        {% endcomment %}
+                                    <ul class="social-icon mt-lg-5 mt-3">
+                                        <li class="me-3"><strong>{% trans 'Where to find?' %}</strong></li>
+                                        <li><a href="#"
+                                               class="social-icon-link bi-twitter"></a></li>
+                                        <li><a href="#" class="social-icon-link bi-linkedin"></a></li>
+                                        <li><a href="#" class="social-icon-link bi-envelope"></a></li>
+                                    </ul>
+                                {% endcomment %}
                             </div>
 
                             <div class="col-lg-6 col-12 mt-lg-0 mt-4">
@@ -78,8 +75,10 @@
                     <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
                         <div class="row">
                             <div class="col-lg-6 col-12 mb-lg-0 mb-4">
-                                <img src="{{ settings.faq_image.url }}"
-                                     class="img-fluid" alt="">
+                                {% if settings.faq_image %}
+                                    <img src="{{ settings.faq_image.url }}"
+                                         class="img-fluid" alt="">
+                                {% endif %}
                             </div>
 
                             <div class="col-lg-5 col-12 m-auto">

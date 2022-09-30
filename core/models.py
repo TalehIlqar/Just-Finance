@@ -134,6 +134,7 @@ class Subscriber(BaseModel):
     def __str__(self):
         return self.email
 
+
 class Excell_template(BaseModel):
     title = models.CharField(max_length=200, verbose_name=_("Title"))
     file = models.FileField(upload_to="excell/", verbose_name=_("File"))

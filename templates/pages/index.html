@@ -37,3 +37,27 @@
     </main>
 
 {% endblock %}
+
+
+{% block js %}
+    <script>
+        const backstretchImages = [
+            "{{ media_url }}{{ settings.introduction_image }}"
+        ]
+        {% comment %}
+        const backstretchImages = [
+            "static/images/slide/microsoft-edge-FAaz8lkinzs-unsplash.jpg",
+            "static/images/slide/surface-1x5jnhtlp3Y-unsplash.jpg",
+            "static/images/slide/surface-71_s6RDJpGc-unsplash.jpg"
+        ]
+        {% endcomment %}
+        {% comment %}
+        const backstretchImages = [
+            {% for image in settings.background_images.all %}
+                '{{ image.image.url }}',
+            {% endfor %}
+        ];
+        {% endcomment %}
+    </script>
+
+{% endblock js %}
