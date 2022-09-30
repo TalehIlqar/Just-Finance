@@ -152,6 +152,15 @@ class Setting(BaseModel):
     default_address = models.CharField(
         max_length=200, verbose_name=_("Default Address")
     )
+    faq_image = models.ImageField(
+        upload_to="faq_image/", blank=True, null=True, verbose_name=_("FAQ Image")
+    )
+    introduction_image = models.ImageField(
+        upload_to="introduction_image/",
+        blank=True,
+        null=True,
+        verbose_name=_("Introduction Image"),
+    )
     facebook = models.CharField(max_length=200, verbose_name=_("Facebook"), blank=True)
     whatsapp = models.CharField(max_length=200, verbose_name=_("Whatsapp"), blank=True)
     instagram = models.CharField(max_length=200, verbose_name=_("Instagram"), blank=True)

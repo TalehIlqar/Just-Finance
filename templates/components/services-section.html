@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n static %}
 <section class="services section-padding" id="section_3">
     <div class="container">
         <div class="row">
@@ -23,7 +24,11 @@
                     </div>
                 </div>
             {% endfor %}
-
+        </div>
+        <div class="col-12">
+            <div class="text-center">
+                <a href="{% url 'services' %}" class="btn btn-primary">{% trans 'See All' %}</a>
+            </div>
         </div>
     </div>
 </section>
