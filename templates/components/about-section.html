@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <section class="about section-padding" id="section_2">
     <div class="container">
         <div class="row">
 
             <div class="col-lg-6 col-12">
-                <h2 class="mb-5">Digital Happiness</h2>
+                <h2 class="mb-5">{% trans 'Digital Happiness' %}</h2>
             </div>
 
             <div class="col-lg-4 col-12 ms-lg-auto mb-5 mb-lg-0">
@@ -12,16 +13,16 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-intro-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-intro" type="button" role="tab" aria-controls="nav-intro"
-                                aria-selected="true">Introduction
+                                aria-selected="true">{% trans 'Introduction' %}
                         </button>
 
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-profile" type="button" role="tab"
-                                aria-controls="nav-profile" aria-selected="false">HR
+                                aria-controls="nav-profile" aria-selected="false">{% trans 'HR' %}
                         </button>
 
                         <button class="nav-link" id="nav-faq-tab" data-bs-toggle="tab" data-bs-target="#nav-faq"
-                                type="button" role="tab" aria-controls="nav-faq" aria-selected="false">FAQs
+                                type="button" role="tab" aria-controls="nav-faq" aria-selected="false">{% trans 'FAQs' %}
                         </button>
                     </div>
                 </nav>
@@ -55,7 +56,7 @@
 
                                 {% comment %}
                                         <ul class="social-icon mt-lg-5 mt-3">
-                                            <li class="me-3"><strong>Where to find?</strong></li>
+                                            <li class="me-3"><strong>{% trans 'Where to find?' %}</strong></li>
 
                                             <li><a href="#"
                                                    class="social-icon-link bi-twitter"></a></li>
@@ -77,12 +78,12 @@
                     <div class="tab-pane fade" id="nav-faq" role="tabpanel" aria-labelledby="nav-faq-tab">
                         <div class="row">
                             <div class="col-lg-6 col-12 mb-lg-0 mb-4">
-                                <img src="{% static 'images/php-programming-html-coding-cyberspace-concept.jpg' %}"
+                                <img src="{{ settings.faq_image.url }}"
                                      class="img-fluid" alt="">
                             </div>
 
                             <div class="col-lg-5 col-12 m-auto">
-                                <h3 class="mb-3">Frequenlty Asked Questions</h3>
+                                <h3 class="mb-3">{% trans 'Frequenlty Asked Questions' %}</h3>
                                 <div class="accordion" id="accordionGeneral">
                                     {% for faq in faqs %}
                                         <div class="accordion-item">
