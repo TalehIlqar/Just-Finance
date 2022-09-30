@@ -1,8 +1,9 @@
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import FileResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import activate, gettext_lazy as _
-from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Setting
+from django.views.generic import ListView
+from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Setting, Excell_template
 
 
 def index(request):
@@ -74,3 +75,30 @@ def set_language(request, lang):
     response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
     activate(lang)
     return response
+
+
+class Excell_templateWiev(ListView):
+    model = Excell_template
+    template_name = "pages/excell.html"
+    context_object_name = "excell_template"
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        # context["excell"] = Excell_template.objects.all()
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("Excell Template")
+        return context
+
+
+class ExcellDetail(ListView):
+    def get(self, request, pk, status=None):
+        try:
+            excell = Excell_template.objects.get(pk=pk)
+        except:
+            return "File does not exist"
+        response = FileResponse(open(excell.file.path, 'rb'))
+        if status == 'download':
+            response['Content-Disposition'] = 'attachment; filename=%s' % excell.file.name
+        else:
+            response['Content-Disposition'] = 'inline; filename=%s' % excell.file.name
+        return response
