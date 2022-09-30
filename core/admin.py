@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Blog, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Setting, Subscriber
+from .models import Blog, Excell_template, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Setting, Subscriber
 
 
 @admin.register(Blog)
@@ -77,3 +77,9 @@ class AdminSettings(admin.ModelAdmin):
 class AdminSubscriber(admin.ModelAdmin):
     list_display = ('email',)
     search_fields = ('email',)
+
+
+@admin.register(Excell_template)
+class AdminExcell_template(admin.ModelAdmin):
+    list_display = ('title',)
+    # search_fields = ('title',)

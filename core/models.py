@@ -134,6 +134,17 @@ class Subscriber(BaseModel):
     def __str__(self):
         return self.email
 
+class Excell_template(BaseModel):
+    title = models.CharField(max_length=200, verbose_name=_("Title"))
+    file = models.FileField(upload_to="excell/", verbose_name=_("File"))
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Excell Template")
+        verbose_name_plural = _("Excell Templates")
+
 
 class Setting(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"))
@@ -161,6 +172,8 @@ class Setting(BaseModel):
         null=True,
         verbose_name=_("Introduction Image"),
     )
+    keywords = models.CharField(max_length=200, verbose_name=_("Keywords (SEO)"))
+    description = models.CharField(max_length=200, verbose_name=_("Description (SEO)"))
     facebook = models.CharField(max_length=200, verbose_name=_("Facebook"), blank=True)
     whatsapp = models.CharField(max_length=200, verbose_name=_("Whatsapp"), blank=True)
     instagram = models.CharField(max_length=200, verbose_name=_("Instagram"), blank=True)

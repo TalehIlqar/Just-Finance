@@ -26,14 +26,8 @@
 
                 <ul class="footer-menu">
                     {% for service in footer_services %}
-                        <li class="footer-menu-item"><a href="{{ service.url }}"
+                        <li class="footer-menu-item"><a href="{% url 'service_detail' service.slug %}"
                                                         class="footer-menu-link">{{ service.title }}</a></li>
-
-                        <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Creative Ideas</a></li> -->
-
-                        <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Branding</a></li> -->
-
-                        <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Video Contents</a></li> -->
                     {% endfor %}
                 </ul>
             </div>

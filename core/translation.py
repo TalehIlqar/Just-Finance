@@ -1,5 +1,5 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import About, Blog, Contact, FAQ, Finance, HR, Service, Tax, ApplicationCategory, Setting
+from .models import About, Blog, Contact, FAQ, Finance, HR, Service, Tax, ApplicationCategory, Setting, Excell_template
 
 
 class AboutUsTranslationOptions(TranslationOptions):
@@ -38,6 +38,10 @@ class SettingsTranslationOptions(TranslationOptions):
     fields = ('slogan',)
 
 
+class Excell_templateTranslationOptions(TranslationOptions):
+    fields = ('title',)
+
+
 translator.register(About, AboutUsTranslationOptions)
 translator.register(Blog, BlogTranslationOptions)
 translator.register(FAQ, FAQTranslationOptions)
@@ -47,3 +51,4 @@ translator.register(Service, ServiceTranslationOptions)
 translator.register(Tax, TaxTranslationOptions)
 translator.register(ApplicationCategory, ApplicationCategoryTranslationOptions)
 translator.register(Setting, SettingsTranslationOptions)
+translator.register(Excell_template, Excell_templateTranslationOptions)
