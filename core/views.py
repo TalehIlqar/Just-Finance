@@ -13,7 +13,8 @@ def index(request):
         "hr": HR.objects.last(),
         "faqs": FAQ.objects.all(),
         "services": Service.objects.all()[:3],
-        "blogs": Blog.objects.all()[:3],
+        "blogs": Blog.objects.filter(is_pin=False).order_by('-id')[:2],
+        "blogs_pin": Blog.objects.filter(is_pin=True).order_by('-id')[:1],
         "applicationcategory": ApplicationCategory.objects.all(),
         "media_url": settings.MEDIA_URL,
     }
