@@ -6,7 +6,7 @@
 
             <h2 class="mb-5 text-center">Digital Services</h2>
 
-            {% for service in services %}
+            {% for service in services %}  <!-- 4 dene yan-yana -->
             <div class="card" style="width: 18rem;">
                     <img src="{% if service.image %} {{ service.image.url }} {% endif %}" class="card-img-top" alt="...">
                     <div class="card-body">
