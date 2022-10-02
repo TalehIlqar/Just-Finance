@@ -7,22 +7,14 @@
             <h2 class="mb-5 text-center">Digital Services</h2>
 
             {% for service in services %}
-                <div class="random-bg col-lg-4 col-12 d-flex p-0">
-                    <img src="{% if service.image %} {{ service.image.url }} {% endif %}"
-                         class="img-fluid services-image"
-                         alt="">
-                </div>
-
-                <div class="col-lg-4 col-12 p-0">
-                    <div class="services-info custom-icon-left paddingText">
-
-                        <h4 class="">{{ service.title }}</h4>
-
-                        <p class="mb-4">{{ service.description|truncatechars:100|safe }}</p>
-
-                        <a class="custom-btn custom-bg-dark btn" href="{% url 'service_detail' service.slug %}">Learn More</a>
+            <div class="card" style="width: 18rem;">
+                    <img src="{% if service.image %} {{ service.image.url }} {% endif %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ service.title }}</h5>
+                      <p class="card-text">{{ service.description|truncatechars:100|safe }}</p>
+                      <a href="{% url 'service_detail' service.slug %}" class="btn btn-primary">Learn More</a>
                     </div>
-                </div>
+            </div>
             {% endfor %}
         </div>
         <div class="col-12">
@@ -40,22 +32,3 @@
         item.style.backgroundColor = "#" + randomColor;
     });
 </script>
-<!-- 
-<section class="services section-padding" id="section_3">
-    <div class="container">
-        <div class="row">
-            <h2 class="mb-5 text-center">Digital Services</h2>
-            {% for service in services %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{% if service.image %} {{ service.image.url }} {% endif %}" class="card-img-top"
-                         alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.description|truncatechars:100|safe }}</p>
-                        <a href="{% url 'service_detail' service.slug %}" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section> -->
