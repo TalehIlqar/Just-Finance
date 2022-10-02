@@ -3,6 +3,8 @@ from datetime import datetime
 
 from django.conf import settings
 
+from just_finance.settings import ADMIN_LANGUAGE_CODE
+
 
 class LoggingMiddleware(object):
     def __init__(self, get_response):
@@ -24,3 +26,16 @@ class LoggingMiddleware(object):
         with open(os.path.join(file_path, file_name), "a") as f:
             f.write(f"{request.__dict__}{response.__dict__}")
         return response
+
+
+def force_default_language_middleware(get_response):
+
+    def middleware(request):
+        if "HTTP_ACCEPT_LANGUAGE" in request.META:
+            del request.META["HTTP_ACCEPT_LANGUAGE"]
+
+        response = get_response(request)
+
+        return response
+
+    return middleware

@@ -40,22 +40,3 @@
         item.style.backgroundColor = "#" + randomColor;
     });
 </script>
-<!-- 
-<section class="services section-padding" id="section_3">
-    <div class="container">
-        <div class="row">
-            <h2 class="mb-5 text-center">Digital Services</h2>
-            {% for service in services %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{% if service.image %} {{ service.image.url }} {% endif %}" class="card-img-top"
-                         alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.description|truncatechars:100|safe }}</p>
-                        <a href="{% url 'service_detail' service.slug %}" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section> -->

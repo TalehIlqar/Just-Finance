@@ -12,7 +12,7 @@ def index(request):
         "about": About.objects.last(),
         "hr": HR.objects.last(),
         "faqs": FAQ.objects.all(),
-        "services": Service.objects.all()[:3],
+        "services": Service.objects.all().order_by('-id')[:3],
         "blogs": Blog.objects.filter(is_pin=False).order_by('-id')[:2],
         "blogs_pin": Blog.objects.filter(is_pin=True).order_by('-id')[:1],
         "applicationcategory": ApplicationCategory.objects.all(),

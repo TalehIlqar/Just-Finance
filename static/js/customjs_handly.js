@@ -20,9 +20,9 @@
   
       // BACKSTRETCH SLIDESHOW
       $('#section_1').backstretch([
-        "static/images/slide/microsoft-edge-FAaz8lkinzs-unsplash.jpg", 
-        "static/images/slide/surface-1x5jnhtlp3Y-unsplash.jpg",
-        "static/images/slide/surface-71_s6RDJpGc-unsplash.jpg"
+        "static/images/slide/pexels-cottonbro-7428212.jpg", 
+      "static/images/slide/pexels-cottonbro-7437090 (1).jpg",
+      "static/images/slide/pexels-cottonbro-7437100.jpg"
       ],  {duration: 2000, fade: 750});
       
     })(window.jQuery);

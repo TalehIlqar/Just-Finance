@@ -4,7 +4,7 @@
 
         <a href="/" class="navbar-brand">
             {% if settings.logo %}
-                <img src="{{ settings.logo.url }}" alt="" width="50px"> {{ settings.sayt_name }}
+                <img src="{{ settings.logo.url }}" alt="" width="80px"> {{ settings.sayt_name }}
             {% endif %}
         </a>
 
@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'excell' %}">{% trans 'Excel' %}</a>
+                    <a class="nav-link" href="{% url 'excell' %}">{% trans 'Document forms' %}</a>
                 </li>
             </ul>
 
