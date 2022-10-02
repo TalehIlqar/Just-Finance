@@ -6,6 +6,13 @@
             <div class="col-12">
                 <h2 class="mb-5 text-center">Şablonlar</h2>
             </div>
+            <div class="col-12">
+                <div class="row text-center">
+                    <form action="{% url 'excell' %}" method="get">
+                        <input name="search_excel" type="text" placeholder="{% trans 'Search...' %}">
+                    </form>
+                </div>
+            </div>
             {% for ex in excell_template %}
             <div class="col-lg-4 col-12">
                 <div class="col-lg-3 col-md-6 my-3">

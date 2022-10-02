@@ -89,6 +89,12 @@ class Excell_templateWiev(ListView):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Excell Template")
         return context
+    
+    def get_queryset(self):
+        search = self.request.GET.get("search_excel")
+        if search:
+            return Excell_template.objects.filter(title__icontains=search)
+        return Excell_template.objects.all()
 
 
 class ExcellDetail(ListView):
