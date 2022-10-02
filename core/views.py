@@ -1,9 +1,9 @@
 from django.conf import settings
-from django.http import FileResponse, Http404, HttpResponseRedirect
+from django.http import FileResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import activate, gettext_lazy as _
 from django.views.generic import ListView
-from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Setting, Excell_template
+from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Excell_template
 
 
 def index(request):

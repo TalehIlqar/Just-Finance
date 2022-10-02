@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'ninja',
     'rest_framework',
     'rosetta',
+    'calculator',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,81 @@
+{% load i18n %}
+<section class="services section-padding" id="section_6">
+    <div class="container">
+
+        <form id="calculator-form" method="post">
+            {% csrf_token %}
+            <div>
+                {% for type in sector_types %}
+                    <label for="sector_type_{{ type.id }}">{{ type.name }}</label>
+                    <input type="radio" name="sector_type" value="{{ type.name }}" data-id="{{ type.id }}" id="sector_type_{{ type.id }}">
+                {% endfor %}
+                <br>
+
+            </div>
+            <div>
+                <input type="number" id="id_from_number">
+                <i class="fa-solid fa-left-right" style="cursor: pointer"></i>
+                <input type="number" id="id_to_number">
+            </div>
+            <br>
+            <table class="table" id="calculator-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Tutulmalar</th>
+                  <th scope="col">Sığortaolunan</th>
+                  <th scope="col">Sığortaedən</th>
+                </tr>
+              </thead>
+              <tbody id="calculator-table-body">
+              </tbody>
+            </table>
+
+        </form>
+    </div>
+</section>
+
+<script>
+    const calculatorForm = document.querySelector('#calculator-form');
+    const fromNumber = document.querySelector('#id_from_number');
+    const toNumber = document.querySelector('#id_to_number');
+    const calculatorTableBody = document.querySelector('#calculator-table-body');
+
+    calculatorForm.addEventListener('keyup', function (e) {
+        e.preventDefault();
+        const sectorType = document.querySelector('input[name="sector_type"]:checked');
+        if (sectorType) {
+            const sectorTypeId = sectorType.dataset.id;
+            const url = '/api/calculator/'
+            const data = {
+                'sector_type': sectorTypeId,
+                'from_number': fromNumber.value,
+            }
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    html = '';
+                    data.sector_type.tax_types.forEach(function (tax_type) {
+                        html += '<tr>';
+                        html += '<td>' + tax_type.name + '</td>';
+                        console.log(tax_type);
+                        tax_type.insurance_types.forEach(function (insurance_type) {
+                            html += '<td>' + insurance_type.fee.fee + '</td>';
+                        });
+                        html += '</tr>';
+                    });
+                    calculatorTableBody.innerHTML = html;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    });
+</script>
