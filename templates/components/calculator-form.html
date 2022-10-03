@@ -48,7 +48,7 @@
             const url = '/api/calculator/'
             const data = {
                 'sector_type': sectorTypeId,
-                'from_number': fromNumber.value,
+                'from_number': parseInt(fromNumber.value),
             }
             fetch(url, {
                 method: 'POST',
