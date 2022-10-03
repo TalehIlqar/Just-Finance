@@ -61,16 +61,32 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
+                    total = {};
                     html = '';
                     data.sector_type.tax_types.forEach(function (tax_type) {
                         html += '<tr>';
                         html += '<td>' + tax_type.name + '</td>';
-                        console.log(tax_type);
                         tax_type.insurance_types.forEach(function (insurance_type) {
                             html += '<td>' + insurance_type.fee.fee + '</td>';
+                            if (total[insurance_type.name]) {
+                                total[insurance_type.name] += insurance_type.fee.fee;
+                            } else {
+                                total[insurance_type.name] = insurance_type.fee.fee;
+                            }
                         });
                         html += '</tr>';
                     });
+                    html += '<tr>';
+                    html += '<td>Toplam</td>';
+                    for (const [key, value] of Object.entries(total)) {
+                        html += '<td>' + value + '</td>';
+                    }
+                    html += '</tr>';
+                    toNumber.value = fromNumber.value;
+                    for (const [key, value] of Object.entries(total)) {
+                        toNumber.value -= value;
+                    }
+                    toNumber.value = toNumber.value
                     calculatorTableBody.innerHTML = html;
                 })
                 .catch((error) => {
