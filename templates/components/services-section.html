@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
 
-            <h2 class="mb-5 text-center">Digital Services</h2>
+            <h2 class="mb-5 text-center"></h2>
 
             {% for service in services %}
                 <div class="random-bg col-lg-4 col-12 d-flex p-0">
@@ -20,7 +20,7 @@
 
                         <p class="mb-4">{{ service.description|truncatechars:100|safe }}</p>
 
-                        <a class="custom-btn custom-bg-dark btn" href="{% url 'service_detail' service.slug %}">Learn More</a>
+                        <a class="custom-btn custom-bg-dark btn" href="{% url 'service_detail' service.slug %}">{% trans 'Learn More' %}</a>
                     </div>
                 </div>
             {% endfor %}

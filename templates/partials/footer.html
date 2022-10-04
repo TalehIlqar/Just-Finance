@@ -3,7 +3,7 @@
         <div class="row">
 
             <div class="col-lg-5 col-12 me-auto mb-4">
-                <h5 class="text-white mb-3" id="subscribeModalLongTitle">Newsletter</h5>
+                <h5 class="text-white mb-3" id="subscribeModalLongTitle">{% trans 'Newsletter' %}</h5>
 
                 <form class="custom-form subscribe-form mt-4" role="form" method="post">
                     {% csrf_token %}
@@ -14,7 +14,7 @@
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-5">
-                            <button type="submit" class="form-control" id="emailbutton">Abunə ol</button>
+                            <button type="submit" class="form-control" id="emailbutton">{% trans 'Subscribe' %}</button>
                         </div>
 
                     </div>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-lg-2 col-12 mx-auto my-lg-0 my-4">
-                <h5 class="text-white mb-3">Services</h5>
+                <h5 class="text-white mb-3">{% trans 'Services' %}</h5>
 
                 <ul class="footer-menu">
                     {% for service in footer_services %}
@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-lg-2 col-12">
-                <h5 class="text-white mb-3">Company</h5>
+                <h5 class="text-white mb-3">{% trans 'Company' %}</h5>
 
                 <p class="text-white mb-1">{{ settings.default_address }}</p>
                 <p class="text-white mb-1">{{ settings.default_number }}</p>

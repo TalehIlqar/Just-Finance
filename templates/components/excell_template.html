@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="mb-5 text-center">Şablonlar</h2>
+                <h2 class="mb-5 text-center">{% trans 'Documents' %}</h2>
             </div>
             <div class="col-12">
                 <div class="row text-center">
@@ -22,7 +22,7 @@
                         <h5 class="card-title mt-3"><a href="{% url 'excell' ex.id %}show">{{ ex.title |truncatechars:40}}</a></h5>
                         <p class="card-text mb-5">{{ex.file.size}} KB </p>
                         <a target="_blank" href="{% url 'excell' ex.id %}download" class="btn btn-primary-outline text-primary" style="position: absolute; left: 0; right: 0; bottom: 5%;"><i
-                        class="fas fa-arrow-down"></i>Endir</a>
+                        class="fas fa-arrow-down"></i>{% trans 'Endir' %}</a>
                         </div>
                     </div>
                 </div>
