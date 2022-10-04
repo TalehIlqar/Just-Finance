@@ -22,7 +22,9 @@ urlpatterns = [
     path('metal/', admin.site.urls),
     path('translation/', include('rosetta.urls')),
     path("", include("core.urls")),
+    path("", include("calculator.urls")),
     path("api/", include("core.api.urls")),
+    path("api/", include("calculator.api.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
 ]
