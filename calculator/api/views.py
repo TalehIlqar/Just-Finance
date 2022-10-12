@@ -29,11 +29,11 @@ class CalculatorView(APIView):
                     "tax_types": [
                         {
                             "id": tax_type.id,
-                            "name": tax_type.name,
+                            "name": tax_type.name.name,
                             "insurance_types": [
                                 {
                                     "id": insurance_type.id,
-                                    "name": insurance_type.name,
+                                    "name": insurance_type.name.name,
                                     "fee": {
                                             "from_number": insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().from_number,
                                             "to_number": insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().to_number,
