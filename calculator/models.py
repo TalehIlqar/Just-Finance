@@ -29,7 +29,7 @@ class InsuranceType(models.Model):
     fees = models.ManyToManyField(InsuranceFee, verbose_name="Fees")
 
     def __str__(self):
-        return self.name
+        return f"{self.name.name}"
 
     class Meta:
         verbose_name = "Insurance Type"
@@ -63,7 +63,7 @@ class TaxType(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return f"{self.name.name}"
 
 
 class SectorType(models.Model):
