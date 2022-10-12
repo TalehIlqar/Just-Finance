@@ -8,7 +8,6 @@ from .models import (
     InsuranceType,
     TaxType,
     SectorType,
-    Calculator,
 )
 
-admin.site.register([InsuranceFee, InsuranceType, TaxType, SectorType, Calculator])
+admin.site.register([InsuranceFee, InsuranceType, TaxType, SectorType])

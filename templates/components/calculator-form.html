@@ -6,8 +6,9 @@
             {% csrf_token %}
             <div>
                 {% for type in sector_types %}
+                    <input {% if forloop.first %} checked="checked" {% endif %} type="radio" name="sector_type" value="{{ type.name }}" data-id="{{ type.id }}" id="sector_type_{{ type.id }}">
                     <label for="sector_type_{{ type.id }}">{{ type.name }}</label>
-                    <input type="radio" name="sector_type" value="{{ type.name }}" data-id="{{ type.id }}" id="sector_type_{{ type.id }}">
+                    <br>
                 {% endfor %}
                 <br>
 
@@ -67,7 +68,8 @@
                         html += '<tr>';
                         html += '<td>' + tax_type.name + '</td>';
                         tax_type.insurance_types.forEach(function (insurance_type) {
-                            html += '<td>' + insurance_type.fee.fee + '</td>';
+                            console.log(insurance_type.fee.fee);
+                            html += '<td>' + (insurance_type.fee.fee > 0 ? insurance_type.fee.fee : '') + '</td>';
                             if (total[insurance_type.name]) {
                                 total[insurance_type.name] += insurance_type.fee.fee;
                             } else {
