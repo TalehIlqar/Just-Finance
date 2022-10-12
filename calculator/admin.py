@@ -1,13 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
-
-
 from .models import (
     InsuranceFee,
     InsuranceType,
     TaxType,
     SectorType,
+    InsuranceTypeName,
+    TaxTypeName
 )
 
-admin.site.register([InsuranceFee, InsuranceType, TaxType, SectorType])
+# Register your models here.
+
+admin.site.register([InsuranceFee, InsuranceType, TaxType, SectorType, InsuranceTypeName, TaxTypeName])
