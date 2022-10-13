@@ -1,33 +1,55 @@
 {% load static %}
 {% load i18n static %}
-<section class="work section-padding" id="section_4">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="mb-5 text-center">{% trans 'Documents' %}</h2>
-            </div>
-            <div class="col-12">
-                <div class="row text-center">
-                    <form action="{% url 'excell' %}" method="get">
-                        <input name="search_excel" type="text" placeholder="{% trans 'Search...' %}">
-                    </form>
-                </div>
-            </div>
-            {% for ex in excell_template %}
-            <div class="col-lg-4 col-12">
-                <div class="col-lg-3 col-md-6 my-3">
-                    <div class="card text-center" style="background: #F9F9F9; border-radius: 20px; height: 100%; border: none; min-width:200px;min-height: 300px;">
-                        <div class="card-body">
-                        <img style="width: 64px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2086px-Microsoft_Excel_2013-2019_logo.svg.png" alt="">
-                        <h5 class="card-title mt-3"><a href="{% url 'excell' ex.id %}show">{{ ex.title |truncatechars:40}}</a></h5>
-                        <p class="card-text mb-5">{{ex.file.size}} KB </p>
-                        <a target="_blank" href="{% url 'excell' ex.id %}download" class="btn btn-primary-outline text-primary" style="position: absolute; left: 0; right: 0; bottom: 5%;"><i
-                        class="fas fa-arrow-down"></i>{% trans 'Endir' %}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+
+<section class="files  section-padding" id="section_5">
+
+    <div id="divSearchFiles" class="container d-flex   mb-3  ">
+        <form action="{% url 'excell' %}" method="get">
+        <input id="inputSearchBar" name="search_excel" type="text" class="form-control rounded-0 rounded-left"
+            placeholder="Axtarılan sənəd" aria-label="Username" aria-describedby="basic-addon1">
+        </form>
+        <select class="d-inline-block form-select rounded-0 form-select-sm  "
+            aria-label=".form-select-sm example">
+            <option selected>Kateqoriya </option>
+            <option value="1">Mühasibat</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <button id="btnSearchFiles" class="btn btn-primary rounded-right">Axtar</button>
     </div>
+
+    <div id="files" class="container  ">
+        {% for ex in excell_template %}
+
+        <div class="row ">
+            <div class=" col-1">
+                <img style="width:100%;padding: 10px;" src="{% static 'ELAVE/iconDocument5.png' %}" alt="">
+
+            </div>
+            <div class=" col-11 mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="card-title">{{ ex.title |truncatechars:20}}
+                    </p>
+                    <p class="ms-auto d-flex">
+                        <button style="margin-right: 10px;" href="#" onclick="toggleIframe('iframe1')" class="btn btn-primary">
+                            <span id="iframe1span">Göstər</span>
+                        </button>
+                        <a
+                            href="{% url 'excell' ex.id %}download"
+                            class="btn btn-success">{% trans 'Endir' %}</a>
+                    </p>
+                </div>
+                <div>
+                    <p class="card-text">
+                        <iframe id="iframe1" class="iframe"
+                            srcFrom="https://docs.google.com/spreadsheets/d/1eXytvCSDoSgJamoeMbW9v3DxQrUYqQwk/edit?rtpof=true"
+                            src="" style="width:100%; height:0; border:0;"></iframe>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
 </section>
+
+

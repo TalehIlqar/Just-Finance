@@ -1,0 +1,12 @@
+{% load static %}
+{% load i18n %}
+<section class="about section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+            <div >
+                <div class="about-info custom-icon-left paddingText">
+                    <h4 class="mb-4">{% trans 'Contact' %}</h4>
+                    <p>
+                        {{ about.description|safe }}
+                    </p>
+        </div>
