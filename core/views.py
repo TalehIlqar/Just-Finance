@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import FileResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import activate, gettext_lazy as _
+
 from django.views.generic import ListView
 from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Excell_template
 
@@ -35,6 +36,7 @@ def contact(request):
     context = {
         "title": _("Contact"),
         "applicationcategory": ApplicationCategory.objects.all(),
+        "about" : About.objects.last(),
     }
     return render(request, "pages/contact.html", context)
 

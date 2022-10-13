@@ -1,0 +1,66 @@
+<section class="home services mt-5 py-5 bg-light" id="section_6">
+    <div class="container">
+        <h2 class="mb-5 text-center">Kalkulyator</h2>
+        <form id="calculator-form" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="wSY5OgQdDtEDLFedGas5mDPyRtIBYw628GklBSh3LXk9YqSbCvD4RZwqlD3DRTRk">
+            <div class="d-flex align-items-baseline mb-2">
+
+                <input type="radio" name="sector_type"
+                    value="Neft-qaz sahəsində fəaliyyəti olmayan və qeyri-dövlət sektoruna aid edilən"
+                    data-id="1" id="sector_type_1">
+                <label class=" inline-block" for="sector_type_1">Neft-qaz sahəsində fəaliyyəti olmayan və
+                    qeyri-dövlət sektoruna aid
+                    edilən</label>
+
+
+
+
+            </div>
+            <div class="d-flex align-items-baseline">
+                <input type="radio" name="sector_type"
+                    value="Neft-qaz sahəsində fəaliyyəti olan və dövlət sektoruna aid edilən" data-id="2"
+                    id="sector_type_2">
+                <label class="inline-block" for="sector_type_2">Neft-qaz sahəsində fəaliyyəti olan və dövlət
+                    sektoruna aid
+                    edilən</label>
+            </div>
+            <br><br>
+            <div class="d-flex flex-row-reverse calculatorInputHolder">
+                <div class="input-group mb-3">
+                    <!-- <div class="input-group-append ">
+                        <span class="input-group-text text-secondary bg-white" id="basic-addon2">Gross əməkhaqqı</span>
+                    </div> -->
+                    <input id="inputGrossIncome" type="number" class="form-control"
+                        placeholder="Gross əməkhaqqı" disabled aria-label="0" aria-describedby="basic-addon2">
+                </div>
+                <i id="arrowButton" class="fa-solid fa-arrow-right-arrow-left d-inline-block mx-3 mt-2"
+                    style="cursor: pointer"></i>
+
+                <div class="input-group mb-3">
+                    <!-- <div class="input-group-append">
+                        <span class="input-group-text text-secondary bg-white" id="basic-addon2">Net əməkhaqqı</span>
+                    </div> -->
+                    <input id="inputNetIncome" type="number" class="form-control" placeholder="Net əməkhaqqı"
+                        aria-label="0" aria-describedby="basic-addon2">
+                </div>
+                <!-- <input type="number" id="id_from_number">
+                <i class="fa-solid fa-arrow-right-arrow-left d-inline-block mx-3" style="cursor: pointer"></i>
+                 <input type="number" id="id_to_number"> -->
+            </div>
+            <br>
+            <table class="table" id="calculator-table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Tutulmalar</th>
+                        <th scope="col">Sığortaolunan</th>
+                        <th scope="col">Sığortaedən</th>
+                    </tr>
+                </thead>
+                <tbody id="calculator-table-body">
+                </tbody>
+            </table>
+
+        </form>
+    </div>
+</section>
