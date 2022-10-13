@@ -8,16 +8,12 @@ class InsuranceFee(models.Model):
     to_number = models.IntegerField()
     from_to_formula = models.CharField(max_length=255, blank=True, null=True)
     to_from_formula = models.CharField(max_length=255, blank=True, null=True)
+    insurance_type = models.ForeignKey(
+        "InsuranceType", on_delete=models.CASCADE, related_name="fees", blank=True, null=True
+    )
 
     def __str__(self):
-        return f"{self.from_number} - {self.to_number}"
-
-
-class InsuranceTypeName(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f"{self.name}"
+        return f"{self.from_number} - {self.to_number} - {self.insurance_type.name}"
 
 
 class InsuranceType(models.Model):
@@ -25,29 +21,15 @@ class InsuranceType(models.Model):
         Sığortaolunan,
         Sığortaedən
     """
-    name = models.ForeignKey(InsuranceTypeName, on_delete=models.CASCADE)
-    fees = models.ManyToManyField(InsuranceFee, verbose_name="Fees")
+    name = models.CharField(max_length=255, blank=True, null=True)
+    tax_type = models.ForeignKey("TaxType", on_delete=models.CASCADE, related_name="insurance_types", blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name.name}"
+        return f"{self.name} - {self.tax_type.name}"
 
     class Meta:
         verbose_name = "Insurance Type"
         verbose_name_plural = "Insurance Types"
-
-
-class TaxTypeName(models.Model):
-    """
-        Vergi adı
-    """
-    name = models.CharField(max_length=255, verbose_name="Name")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Tax Type Name"
-        verbose_name_plural = "Tax Type Names"
 
 
 class TaxType(models.Model):
@@ -57,13 +39,11 @@ class TaxType(models.Model):
         İşsizlikdən sığorta haqqı,
         İcbari tibbi sığorta
     """
-    name = models.ForeignKey(TaxTypeName, on_delete=models.CASCADE, verbose_name="Name")
-    insurance_types = models.ManyToManyField(
-        InsuranceType, verbose_name="Insurance Types"
-    )
+    sector_type = models.ForeignKey("SectorType", on_delete=models.CASCADE, related_name="tax_types", blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name.name}"
+        return f"{self.name} - {self.sector_type.name}"
 
 
 class SectorType(models.Model):
@@ -72,7 +52,6 @@ class SectorType(models.Model):
         Neft-qaz sahəsində fəaliyyəti olan və dövlət sektoruna aid edilən
     """
     name = models.CharField(max_length=100)
-    tax_types = models.ManyToManyField(TaxType, related_name="sector_types")
 
     def __str__(self):
         return self.name
