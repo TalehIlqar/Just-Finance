@@ -6,7 +6,9 @@
             {% csrf_token %}
             <div>
                 {% for type in sector_types %}
-                    <input {% if forloop.first %} checked="checked" {% endif %} type="radio" name="sector_type" value="{{ type.name }}" data-id="{{ type.id }}" id="sector_type_{{ type.id }}">
+                    <input {% if forloop.first %} checked="checked" {% endif %} type="radio" name="sector_type"
+                                                  value="{{ type.name }}" data-id="{{ type.id }}"
+                                                  id="sector_type_{{ type.id }}">
                     <label for="sector_type_{{ type.id }}">{{ type.name }}</label>
                     <br>
                 {% endfor %}
@@ -20,15 +22,15 @@
             </div>
             <br>
             <table class="table" id="calculator-table">
-              <thead class="thead-dark">
+                <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Tutulmalar</th>
-                  <th scope="col">Sığortaolunan</th>
-                  <th scope="col">Sığortaedən</th>
+                    <th scope="col">Tutulmalar</th>
+                    <th scope="col">Sığortaedən</th>
+                    <th scope="col">Sığortaolunan</th>
                 </tr>
-              </thead>
-              <tbody id="calculator-table-body">
-              </tbody>
+                </thead>
+                <tbody id="calculator-table-body">
+                </tbody>
             </table>
 
         </form>
