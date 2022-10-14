@@ -173,6 +173,7 @@ class Setting(BaseModel):
         null=True,
         verbose_name=_("Introduction Image"),
     )
+    contact = RichTextField(verbose_name=_("Description"), blank=True, null=True)
     keywords = models.CharField(max_length=200, verbose_name=_("Keywords (SEO)"))
     description = models.CharField(max_length=200, verbose_name=_("Description (SEO)"))
     facebook = models.CharField(max_length=200, verbose_name=_("Facebook"), blank=True)
