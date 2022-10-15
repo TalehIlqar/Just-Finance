@@ -86,17 +86,28 @@ class Excell_templateWiev(ListView):
     context_object_name = "excell_template"
     paginate_by = 10
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset
+
     def get_context_data(self, **kwargs):
         # context["excell"] = Excell_template.objects.all()
         context = super().get_context_data(**kwargs)
         context["title"] = _("Excell Template")
-        return context
-    
-    def get_queryset(self):
+        context["excell_template"] = Excell_template.objects.all()
+        context["categories"] = ApplicationCategory.objects.all()
+        category = self.request.GET.get("category_id")
         search = self.request.GET.get("search_excel")
         if search:
-            return Excell_template.objects.filter(title__icontains=search)
-        return Excell_template.objects.all()
+            context["excell_template"] = Excell_template.objects.filter(title__icontains=search)
+        if category:
+            context["excell_template"] = Excell_template.objects.filter(category__id=category)
+        if category and search:
+            context["excell_template"] = Excell_template.objects.filter(title__icontains=search, category__id=category)
+        
+        context["search"] = search
+        context["selected_category"] = category
+        return context
 
 
 class ExcellDetail(ListView):
