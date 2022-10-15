@@ -1,21 +1,37 @@
 {% load static %}
 {% load i18n static %}
+<script>
+   function updateSearch(){
+            console.log("updateSearch");
+            let search_excel = document.querySelector('input[name="search_excel"]').value;
+            let recategory = document.querySelector('select[name="reCategory"]').value;
+            console.log(recategory, "recategory");
+            let url = new URL(window.location.href)
+            let params = url.searchParams;
+
+            params.set('search_excel', search_excel);
+            params.set('category_id', recategory);
+
+            url.search = params.toString();
+            window.location.href = url.toString();
+        }
+</script>
 
 <section class="files  section-padding" id="section_5">
 
     <div id="divSearchFiles" class="container d-flex   mb-3  ">
-        <form action="{% url 'excell' %}" method="get">
-        <input id="inputSearchBar" name="search_excel" type="text" class="form-control rounded-0 rounded-left"
-            placeholder="Axtarılan sənəd" aria-label="Username" aria-describedby="basic-addon1">
-        </form>
-        <select class="d-inline-block form-select rounded-0 form-select-sm  "
+        <!-- <form action="{% url 'excell' %}" method="get"> -->
+        <input id="inputSearchBar" value="{{ search }}" name="search_excel" type="text" class="form-control rounded-0 rounded-left"
+            placeholder="{% trans 'Searched document' %}" aria-label="Username" aria-describedby="basic-addon1">
+        <!-- </form> -->
+        <select name="reCategory" class="d-inline-block form-select rounded-0 form-select-sm  "
             aria-label=".form-select-sm example">
-            <option selected>Kateqoriya </option>
-            <option value="1">Mühasibat</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="">{% trans 'Category' %}</option>
+            {% for category in categories %}
+            <option value="{{category.id}}" {% if selected_category == category.id %}selected{% endif %}>{{ category.title }}</option>
+            {% endfor %}
         </select>
-        <button id="btnSearchFiles" class="btn btn-primary rounded-right">Axtar</button>
+        <button onclick="updateSearch()" id="btnSearchFiles" class="btn btn-primary rounded-right">{% trans 'Search' %}</button>
     </div>
 
     <div id="files" class="container  ">
@@ -32,11 +48,11 @@
                     </p>
                     <p class="ms-auto d-flex">
                         <button style="margin-right: 10px;" href="#" onclick="toggleIframe('iframe1')" class="btn btn-primary">
-                            <span id="iframe1span">Göstər</span>
+                            <span id="iframe1span">{% trans 'Show' %}</span>
                         </button>
                         <a
                             href="{% url 'excell' ex.id %}download"
-                            class="btn btn-success">{% trans 'Endir' %}</a>
+                            class="btn btn-success">{% trans 'Download' %}</a>
                     </p>
                 </div>
                 <div>

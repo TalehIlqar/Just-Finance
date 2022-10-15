@@ -138,6 +138,12 @@ class Subscriber(BaseModel):
 class Excell_template(BaseModel):
     title = models.CharField(max_length=200, verbose_name=_("Title"))
     file = models.FileField(upload_to="excell/", verbose_name=_("File"))
+    category = models.ForeignKey(
+        "ApplicationCategory",
+        on_delete=models.CASCADE,
+        verbose_name=_("Category"),
+        related_name="excell_templates",
+    )
 
     def __str__(self):
         return self.title
