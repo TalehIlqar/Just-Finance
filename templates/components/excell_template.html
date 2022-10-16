@@ -28,7 +28,7 @@
             aria-label=".form-select-sm example">
             <option value="">{% trans 'Category' %}</option>
             {% for category in categories %}
-            <option value="{{category.id}}" {% if selected_category == category.id %}selected{% endif %}>{{ category.title }}</option>
+            <option naul="{{selected_category}}" maul="{{category.id}}" value="{{category.id}}" {% if selected_category == category.id|stringformat:"i" %}selected{% endif %}>{{ category.title }}</option>
             {% endfor %}
         </select>
         <button onclick="updateSearch()" id="btnSearchFiles" class="btn btn-primary rounded-right">{% trans 'Search' %}</button>
