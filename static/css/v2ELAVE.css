@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Work Sans', sans-serif !important;
+    /* font-family: 'Kaushan Script', cursive!important; */
+    font-weight: 500;
+}
+
+p {
+    color: rgb(22, 22, 22);
+
+}
+
+nav .container {
+    max-width: 100%;
+    padding-left: 30px;
+    padding-right: 20px;
+    margin: 0;
+}
+
+nav .navbar-brand img {
+    width: 240px;
+}
+
+nav .navbar-toggler {
+    margin-right: 1rem;
+}
+
+
+nav #navbarNav .nav-item a {
+    padding: 20px 30px !important;
+    font-size: 1.6rem;
+}
+
+nav #languageHolder {
+    transform: scale(2);
+}
+
+#languageHolder {
+    position: absolute;
+    z-index: 2000;
+    right: 40px;
+    top: 50px;
+
+}
+
+@media screen and (max-width:2000px) {
+    nav #languageHolder {
+        transform: scale(1.5);
+    }
+
+    nav #navbarNav .nav-item a {
+        padding: 18px 25px !important;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:1650px) {
+    nav #languageHolder {
+        top: 49px;
+    }
+
+    nav #navbarNav .nav-item a {
+        padding: 15px 21px !important;
+        font-size: 1.5rem;
+    }
+
+    nav .navbar-brand img {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width:1450px) {
+
+    nav #navbarNav .nav-item a {
+        padding: 13px 17px !important;
+        font-size: 1.3rem;
+    }
+
+    nav .navbar-brand img {
+        width: 160px;
+    }
+
+    nav #languageHolder {
+        transform: scale(1.3);
+        top: 42px;
+    }
+}
+
+@media screen and (max-width:1330px) {
+
+    nav #navbarNav .nav-item a {
+        padding: 13px 17px !important;
+        font-size: 1.1rem;
+    }
+
+    nav .navbar-brand img {
+        width: 120px;
+    }
+
+    nav #languageHolder {
+        transform: scale(1.3);
+        top: 32px;
+    }
+}
+
+
+
+
+.navbar .language {
+    position: relative;
+    top: -5px;
+    width: 70px;
+    height: 30px;
+}
+
+.navbar .language .absolute {
+    position: absolute;
+    overflow: hidden;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    top: 0;
+    transition: .3s;
+
+}
+
+.navbar .language .absolute:hover {
+    height: 110px;
+    background-color: #1755729d;
+}
+
+.navbar .language a {
+    transition: none;
+    display: inline-block;
+    color: white;
+    padding-top: 10px;
+    width: 70px;
+    height: 30px;
+    text-align: left;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.navbar .language a:hover {
+    text-decoration: underline;
+}
+
+.navbar.sticky-nav .language .absolute {
+    background-color: none;
+}
+
+.navbar.sticky-nav .language a {
+    color: var(--p-color);
+
+}
+
+.navbar.sticky-nav .language .absolute:hover {
+    background-color: whitesmoke;
+}
+
+
+.navbar.sticky-nav .language .absolute a:hover {
+    color: #2c2748;
+
+}
+
+.navbar.sticky-nav .language a:hover {
+    text-decoration: underline;
+    /* color: var(--p-color); */
+}
+
+.navbar .nav-link.active,
+.navbar-nav .nav-link:hover {
+    /* text-decoration: underline; */
+    background-color: #17557271;
+
+    color: white !important;
+
+}
+
+
+
+
+.navbar.sticky-nav .nav-link.active,
+.navbar.sticky-nav .nav-link:hover {
+    /* text-decoration: underline; */
+    /* color: #717275 !important; */
+
+}
+
+nav ul.navbar-nav {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* margin-right: 120px; */
+
+}
+
+footer.site-footer .address {
+    background-image: url('./ELAVE/adressImage.png');
+    width: 100%;
+    display: block;
+    height: 300px;
+
+    background-position: center;
+}
+
+#myBtnn {
+    transition: .4s;
+    color: #175572;
+    font-size: 50px;
+    opacity: 0;
+    pointer-events: none;
+    right: calc(2% - 3px);
+    bottom: 4%;
+    position: fixed;
+
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+
+    margin-bottom: 20px;
+    font-size: 34px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#myBtnn:hover {
+    background-color: #175572;
+    color: white;
+}
+
+@media only screen and (max-width: 992px) {
+    #myBtnn:hover {
+        background-color: transparent;
+        color: #175572;
+    }
+
+    #myBtnn:active {
+        background-color: #175572;
+        color: white;
+    }
+}
+
+#myBtnn.active {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.iconw-right {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.iconw-right img {
+    width: 100%;
+    transform: scale(1.2);
+}
+
+.iconw-right.iconw-call {
+    right: calc(2% - 3px);
+    top: 29%;
+
+    width: 33px;
+    height: 33px;
+    margin-right: 7px;
+}
+
+.iconw-right:hover {
+    transform: scale(1.2);
+}
+
+.iconw-right.iconw-whatsapp {
+    right: 2%;
+
+    top: calc(29% + 50px);
+}
+
+.iconw.passive {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iconw-whatsapp {
+    padding: 2px;
+}
+
+
+
+.iconw-right.iconw-3dots:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.493);
+}
+
+.iconw-3dots {
+    cursor: pointer;
+
+}
+
+.dots-holder {
+    position: fixed;
+    right: calc(2% + 1px);
+    top: calc(29% + 100px);
+    width: 47px;
+    height: 50px;
+    overflow: hidden;
+    transition: height .3s;
+    padding-top: 10px;
+
+}
+
+.dots-holder:hover,
+.dots-holder.active {
+    height: 270px;
+}
+
+.dots-holder>a {
+    margin: 0 5px;
+    width: 37px;
+    display: inline-block;
+    height: 33px;
+    margin-bottom: 20px;
+}
+
+.dots-holder>a img {
+    width: 100%;
+}
+
+.dots-holder>a:hover {
+    transform: scale(1.2);
+
+}
+
+
+#section_6.home {
+    background-color: white;
+}
+
+nav {
+    background-image: linear-gradient(to right, white, #17557271, #17557271, #17557271);
+
+    /* background-color:linear-gradient(to bottom,black, transparent)!important; */
+}
+
+/* excel fajllalry olacaq hisse */
+.files iframe {
+    transition: .3s;
+}
+
+/* kalkuljator */
+
+label.inline-block {
+    margin-left: 10px;
+}
+
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input:disabled {
+    background-color: white !important;
+}
+
+/* SENEDLER HISSESI */
+
+
+#btnSearchFiles {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
+}
+
+#inputSearchBar {
+    border-top-left-radius: 0.25em !important;
+    border-bottom-left-radius: 0.25em !important;
+}
+
+#divSearchFiles {
+    margin-top: 50px !important;
+    margin-bottom: 27px !important;
+    width: 50%;
+}
+
+#divSearchFiles select {
+    width: 30%;
+    /* -moz-appearance:none;  
+    -webkit-appearance:none;  /
+    appearance:none!important; */
+}
+
+#files .row:hover {
+    background-color: rgb(248, 249, 250);
+}
+
+#files p {
+    margin-bottom: 0 !important;
+    height: auto;
+}
+#files .row img{
+    max-width: 100px;
+}
+
+
+@media only screen and (max-width: 992px) {
+     
+    #files .row img{
+        max-width: 60px;
+    }
+    
+}
+@media only screen and (max-width: 768px) {
+     
+    #files .row img{
+        max-width: 40px;
+    }
+    
+}
+#logoSlogan {
+    width: 70%;
+    /* color: rgb(135, 154, 168); */
+}
+
+.services .card h5{
+    cursor: pointer;
+    /* background: red!important; */
+}
+.services .card .card-text p{
+    overflow: hidden!important;
+    height: 0;
+}
+ 
+
+
+/* RESPONSIVLIK */
+.calculatorInputHolder {
+    width: 50%;
+}
+
+#section_6 #inputWarning {
+    color: transparent;
+    font-weight: 500;
+}
+
+#section_6 #inputWarning.visible {
+    color: rgb(230, 7, 7);
+    font-weight: 500;
+}
+
+#serviceDetails{
+    font-weight: 300;
+}
+
+#serviceDetails  .accordion-button::after {
+    transform: rotate(-0);
+}
+#serviceDetails .opened .accordion-button::after {
+    transform: rotate(-90deg);
+}
+
+@media only screen and (max-width: 1330px) {
+    nav .nav-link {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+
+    }
+
+
+
+}
+
+@media only screen and (max-width: 1100px) {
+    nav .nav-link {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        font-size: .8em !important;
+    }
+
+
+
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    #divSearchFiles {
+        width: 90%;
+    }
+
+    #divSearchFiles select {
+        width: 30%;
+    }
+
+    /* .navbar-nav .nav-link {
+        padding-left: 0px !important;
+    } */
+
+
+
+    .navbar .language a {
+        color: var(--p-color);
+    }
+
+    .navbar .language {
+        height: 110px;
+        margin-top: 20px;
+    }
+
+    #languageHolder .language .absolute {
+        height: 40px;
+    }
+
+    #languageHolder.active .language .absolute {
+        height: 110px;
+    }
+
+    #languageHolder {
+        position: absolute;
+        z-index: 2000;
+        right: 70px;
+        top: 10px;
+    }
+
+    #languageHolder a {
+        pointer-events: none;
+    }
+
+    #languageHolder.active a {
+        pointer-events: all;
+    }
+
+    #languageHolder.active .language .absolute {
+        background-color: whitesmoke !important;
+    }
+
+    .navbar .language .absolute:hover {
+        background-color: transparent !important;
+    }
+
+    nav #navbarNav .nav-item a {
+        padding: 13px 17px !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+
+
+    .dots-holder.deactive {
+        height: 50px;
+    }
+
+    .dots-holder.active {
+        height: 270px;
+    }
+
+    .calculatorInputHolder {
+        width: 76%;
+        margin-left: 12%;
+    }
+
+    #divSearchFiles {
+        width: 100%;
+    }
+
+    #divSearchFiles select {
+        width: 60px !important;
+        color: transparent;
+        position: relative;
+        background-image: url('./ELAVE/filter-solid.svg')!important;
+    }
+/* 
+    #divSearchFiles button{
+        position: relative;
+    } */
+    /* #divSearchFiles button::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: -33px;
+        width: 20px;
+        pointer-events: none;
+        height: 25px;
+        z-index: 2020;
+        background-color: white;
+    } */
+
+
+    /* #divSearchFiles>div i {
+        position: absolute;
+        z-index: 3000;
+        font-size: 1.3rem;
+        top: 25%;
+        left: calc(100% + 10px);
+        color: rgb(131, 131, 131);
+        pointer-events: none;
+    } */
+
+    #divSearchFiles select   * {
+        font-size: .8rem !important;
+        padding-left: .3rem !important;
+        padding-right: 2rem !important;
+
+        color: rgb(39, 39, 39) !important;
+        /* padding: .3rem .2rem!important; */
+    }
+
+     nav #languageHolder {
+        top: 15px;
+    }
+
+    nav #navbarNav .nav-item a {
+        padding: 13px 17px !important;
+        font-size: 1rem !important;
+    }
+}

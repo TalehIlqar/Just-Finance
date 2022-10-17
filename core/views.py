@@ -19,7 +19,7 @@ def index(request):
         "applicationcategory": ApplicationCategory.objects.all(),
         "media_url": settings.MEDIA_URL,
     }
-    return render(request, "pages/index.html", context)
+    return render(request, "pages/v2index.html", context)
 
 
 def about(request):
@@ -46,7 +46,7 @@ def services(request):
         "title": _("Services"),
         "services": Service.objects.all(),
     }
-    return render(request, "pages/services.html", context)
+    return render(request, "pages/v2services.html", context)
 
 
 def service_detail(request, slug):
@@ -54,7 +54,7 @@ def service_detail(request, slug):
         "title": _("Service Detail"),
         "service": Service.objects.get(slug=slug),
     }
-    return render(request, "pages/service-detail.html", context)
+    return render(request, "pages/v2service-detail.html", context)
 
 
 def blog(request):
@@ -82,7 +82,7 @@ def set_language(request, lang):
 
 class Excell_templateWiev(ListView):
     model = Excell_template
-    template_name = "pages/excell.html"
+    template_name = "pages/v2excel.html"
     context_object_name = "excell_template"
     paginate_by = 10
 

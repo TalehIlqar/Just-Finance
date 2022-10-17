@@ -1,0 +1,74 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% load i18n static %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <main>
+        <section class="hero d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12">
+                        <div class="heroText">
+                            <img id="logoSlogan" src="{% static 'ELAVE/sloganStroke2000.png' %}" alt="">
+                            <!-- <h1 class="text-white mb-lg-5 mb-4">Bizi seçdiyinizə görə peşman olmayacaqsiz !!</h1> -->
+
+                            <!-- <a href="https://www.youtube.com/watch?v=AYaHuZ4BB6Y"
+                                class="popup-youtube play-icon-wrap d-flex align-items-center">
+                                    <i class="bi-play play-icon"></i>
+
+                                    <small>1:49 Minutes</small>
+                                </a> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+        </section>
+
+        {% include 'components/about-section.html' %}
+        {% include 'components/services-section.html' %}
+        {% include 'components/blog-section.html' %}
+        {% include 'components/calculator.html' %}
+        {% include 'components/core.html' %}
+
+    </main>
+
+{% endblock %}
+
+
+{% block js %}
+
+
+    <script>
+        const backstretchImages = [
+            "{{ media_url }}{{ settings.introduction_image }}"
+        ] {
+            % comment %
+        }
+        const backstretchImages = [
+            "static/images/slide/microsoft-edge-FAaz8lkinzs-unsplash.jpg",
+            "static/images/slide/surface-1x5jnhtlp3Y-unsplash.jpg",
+            "static/images/slide/surface-71_s6RDJpGc-unsplash.jpg"
+        ] {
+            % endcomment %
+        } {
+            % comment %
+        }
+        const backstretchImages = [{
+                %
+                for image in settings.background_images.all %
+            }
+            '{{ image.image.url }}',
+            {
+                % endfor %
+            }
+        ]; {
+            % endcomment %
+        }
+    </script>
+
+{% endblock js %}

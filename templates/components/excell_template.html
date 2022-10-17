@@ -38,11 +38,11 @@
         {% for ex in excell_template %}
 
         <div class="row ">
-            <div class=" col-1">
-                <img style="width:100%;padding: 10px;" src="{% static 'ELAVE/iconDocument5.png' %}" alt="">
+            <div class=" col-2">
+                <img  src="{% static 'ELAVE/iconDocument5.png' %}" alt="">
 
             </div>
-            <div class=" col-11 mt-3">
+            <div class=" col-10 mt-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="card-title">{{ ex.title |truncatechars:20}}
                     </p>
