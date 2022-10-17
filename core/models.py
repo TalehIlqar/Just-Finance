@@ -1,4 +1,5 @@
 from datetime import datetime
+import email
 
 from ckeditor.fields import RichTextField
 from django.db import models
@@ -186,6 +187,8 @@ class Setting(BaseModel):
     instagram = models.CharField(max_length=200, verbose_name=_("Instagram"), blank=True)
     linkedin = models.CharField(max_length=200, verbose_name=_("Linkedin"), blank=True)
     youtube = models.CharField(max_length=200, verbose_name=_("Youtube"), blank=True)
+    email_address = models.CharField(max_length=200, verbose_name=_("Email Address"), blank=True, null=True)
+    telegram = models.CharField(max_length=200, verbose_name=_("Telegram"), blank=True, null=True)
 
     def __str__(self):
         return "Settings"

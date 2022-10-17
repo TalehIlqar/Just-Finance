@@ -21,14 +21,14 @@
 
     <div id="divSearchFiles" class="container d-flex   mb-3  ">
         <!-- <form action="{% url 'excell' %}" method="get"> -->
-        <input id="inputSearchBar" value="{{ search }}" name="search_excel" type="text" class="form-control rounded-0 rounded-left"
+        <input id="inputSearchBar" value="" name="search_excel" type="text" class="form-control rounded-0 rounded-left"
             placeholder="{% trans 'Searched document' %}" aria-label="Username" aria-describedby="basic-addon1">
         <!-- </form> -->
         <select name="reCategory" class="d-inline-block form-select rounded-0 form-select-sm  "
             aria-label=".form-select-sm example">
             <option value="">{% trans 'Category' %}</option>
             {% for category in categories %}
-            <option value="{{category.id}}" {% if selected_category == category.id %}selected{% endif %}>{{ category.title }}</option>
+            <option naul="{{selected_category}}" maul="{{category.id}}" value="{{category.id}}" {% if selected_category == category.id|stringformat:"i" %}selected{% endif %}>{{ category.title }}</option>
             {% endfor %}
         </select>
         <button onclick="updateSearch()" id="btnSearchFiles" class="btn btn-primary rounded-right">{% trans 'Search' %}</button>

@@ -19,12 +19,16 @@
     <a class=" iconw-3dots " onclick="toggle3dots()">
         <img src="{% static 'ELAVE/iconCloudBlue5.png' %}" alt="">
     </a>
-    <a class="iconw-telegram" href="#">
+    {% if settings.telegram %}
+    <a class="iconw-telegram" href="https://t.me/+{{settings.telegram}}">
         <img src="{% static 'ELAVE/iconTelegram.png' %}" alt="">
     </a>
-    <a class="iconw-mail" href="#">
+    {% endif %}
+    {% if settings.email_address %}
+    <a class="iconw-mail" href="mailto:person@{{settings.email_address}}">
         <img src="{% static 'ELAVE/iconMail3.png' %}" alt="">
     </a>
+    {% endif %}
     {% if settings.instagram %}
     <a class="iconw-insta" href="{{ settings.instagram }}">
         <img src="{% static 'ELAVE/iconInstagram.svg.webp' %}" alt="">

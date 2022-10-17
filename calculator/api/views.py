@@ -37,7 +37,7 @@ class CalculatorView(APIView):
                                     "fee": {
                                             "from_number": insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().from_number if insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first() else None,
                                             "to_number": insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().to_number if insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first() else None,
-                                            "fee": eval(insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().from_to_formula, {}, {"x": from_number}) if insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first() else None,
+                                            "fee": round(eval(insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first().from_to_formula, {}, {"x": from_number}), 2) if insurance_type.fees.filter(from_number__lte=from_number).order_by("-from_number").first() else None,
                                         },
                                 }
                                 for insurance_type in tax_type.insurance_types.all()
