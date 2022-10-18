@@ -4,12 +4,12 @@
 
         <a href="/" class="navbar-brand">
             {% if settings.logo %}
-                <img src="{{ settings.logo.url }}" alt="" width="100px"> {{ settings.sayt_name }}
+            <img src="{{ settings.logo.url }}" alt="" width="100px"> {{ settings.sayt_name }}
             {% endif %}
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -54,19 +54,22 @@
                     {% trans 'Calculator' %}
                 </a> -->
             </div>
-            <div id="languageHolder" class=" ">
-            <div class="language" style="margin-left: 1rem">
-                <div class="absolute">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                    <a class="" href="{% url 'set_language' language.code %}">{{ language.code|upper }}{% if language.code == 'az' %}<i class="fa-solid fa-chevron-down"></i>{% endif %}</a>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
             
+
         </div>
     </div>
 </nav>
+<div id="languageHolder" class=" ">
+    <div class="language" style="margin-left: 1rem">
+        <div class="absolute">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+            <a class=""
+                href="{% url 'set_language' language.code %}">{{ language.code|upper }}{% if language.code == 'az' %}<i
+                    class="fa-solid fa-chevron-down"></i>{% endif %}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

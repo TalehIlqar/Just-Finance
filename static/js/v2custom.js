@@ -42,8 +42,13 @@ window.onscroll = function () { scrollHandler() };
 function scrollHandler() {
     if (window.pageYOffset > 50) {
         $(".navbar").addClass("sticky-nav");
+        $("#languageHolder").addClass("sticky-nav");
+
+        
     } else {
         $(".navbar").removeClass("sticky-nav");
+        $("#languageHolder").removeClass("sticky-nav");
+
     }
     if (window.pageYOffset >= 720) {
         $("#myBtnn").addClass("active");
