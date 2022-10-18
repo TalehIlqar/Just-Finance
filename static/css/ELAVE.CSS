@@ -120,7 +120,7 @@ nav ul.navbar-nav {
 
 }
 footer.site-footer .address { 
-    background-image: url('./ELAVE/adressImage.png');
+    background-image: url('../ELAVE/adressImage.png');
     width: 100%;
     display: block;
     height: 300px;
