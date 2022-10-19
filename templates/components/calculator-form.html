@@ -18,7 +18,7 @@
             <div>
                 <input type="number" id="id_from_number">
                 <i class="fa-solid fa-left-right" style="cursor: pointer"></i>
-                <input type="number" id="id_to_number">
+                <input type="number" id="id_to_number" disabled>
             </div>
             <br>
             <table class="table" id="calculator-table">
@@ -49,9 +49,14 @@
         if (sectorType) {
             const sectorTypeId = sectorType.dataset.id;
             const url = '/api/calculator/'
+
             const data = {
                 'sector_type': sectorTypeId,
-                'from_number': parseInt(fromNumber.value),
+            }
+            if (fromNumber.value) {
+                data['from_number'] = parseInt(fromNumber.value)
+            } else if (toNumber.value) {
+                data['to_number'] = parseInt(toNumber.value)
             }
             fetch(url, {
                 method: 'POST',
@@ -63,14 +68,12 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Success:', data);
                     total = {};
                     html = '';
                     data.sector_type.tax_types.forEach(function (tax_type) {
                         html += '<tr>';
                         html += '<td>' + tax_type.name + '</td>';
                         tax_type.insurance_types.forEach(function (insurance_type) {
-                            console.log(insurance_type.fee.fee);
                             html += '<td>' + (insurance_type.fee.fee > 0 ? insurance_type.fee.fee : '') + '</td>';
                             if (total[insurance_type.name]) {
                                 total[insurance_type.name] += insurance_type.fee.fee;
@@ -86,16 +89,26 @@
                         html += '<td>' + value + '</td>';
                     }
                     html += '</tr>';
-                    toNumber.value = fromNumber.value;
-                    for (const [key, value] of Object.entries(total)) {
-                        toNumber.value -= value;
+                    if (toNumber.disabled){
+                        toNumber.value = fromNumber.value;
+                        for (const [key, value] of Object.entries(total)) {
+                            toNumber.value -= value;
+                        }
+                        toNumber.value = toNumber.value
+                        calculatorTableBody.innerHTML = html;
+                    } else if (fromNumber.disabled){
+                        fromNumber.value = toNumber.value;
+                        for (const [key, value] of Object.entries(total)) {
+                            fromNumber.value -= value;
+                        }
+                        fromNumber.value = fromNumber.value
+                        calculatorTableBody.innerHTML = html;
                     }
-                    toNumber.value = toNumber.value
-                    calculatorTableBody.innerHTML = html;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
         }
     });
+
 </script>
