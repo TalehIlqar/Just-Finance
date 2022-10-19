@@ -88,7 +88,7 @@
                     html += '<tr>';
                     html += '<td>Toplam</td>';
                     for (const [key, value] of Object.entries(total)) {
-                        html += '<td>' + value + '</td>';
+                        html += '<td>' + value.toFixed(2) + '</td>';
                     }
                     html += '</tr>';
                     if (toNumber.disabled){
@@ -96,14 +96,14 @@
                         for (const [key, value] of Object.entries(total)) {
                             toNumber.value -= value;
                         }
-                        toNumber.value = toNumber.value
+                        toNumber.value = toNumber.value.toFixed(2);
                         calculatorTableBody.innerHTML = html;
                     } else if (fromNumber.disabled){
                         fromNumber.value = toNumber.value;
                         for (const [key, value] of Object.entries(total)) {
                             fromNumber.value -= value;
                         }
-                        fromNumber.value = fromNumber.value
+                        fromNumber.value = fromNumber.value.toFixed(2);
                         calculatorTableBody.innerHTML = html;
                     }
                 })
