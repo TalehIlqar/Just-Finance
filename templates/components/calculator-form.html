@@ -16,8 +16,10 @@
 
             </div>
             <div>
+                <label for="id_from_number">{% translate 'Gross maaş' %}
                 <input type="number" id="id_from_number">
-                <i class="fa-solid fa-left-right" style="cursor: pointer"></i>
+                <i class="fa-solid fa-left-right" style="cursor: pointer" onclick="swapNumbers()"></i>
+                <label for="id_to_number">{% translate 'Net maaş' %}
                 <input type="number" id="id_to_number" disabled>
             </div>
             <br>
@@ -94,14 +96,14 @@
                         for (const [key, value] of Object.entries(total)) {
                             toNumber.value -= value;
                         }
-                        toNumber.value = toNumber.value
+                        toNumber.value = toNumber.value;
                         calculatorTableBody.innerHTML = html;
                     } else if (fromNumber.disabled){
                         fromNumber.value = toNumber.value;
                         for (const [key, value] of Object.entries(total)) {
                             fromNumber.value -= value;
                         }
-                        fromNumber.value = fromNumber.value
+                        fromNumber.value = fromNumber.value;
                         calculatorTableBody.innerHTML = html;
                     }
                 })
@@ -110,5 +112,20 @@
                 });
         }
     });
+
+
+    function swapNumbers() {
+        const fromNumber = document.querySelector('#id_from_number');
+        const toNumber = document.querySelector('#id_to_number');
+        if (fromNumber.disabled){
+            fromNumber.disabled = false;
+            toNumber.disabled = true;
+            toNumber.value = '';
+        } else if (toNumber.disabled){
+            fromNumber.disabled = true;
+            toNumber.disabled = false;
+            fromNumber.value = '';
+        }
+    }
 
 </script>
