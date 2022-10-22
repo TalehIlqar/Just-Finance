@@ -94,14 +94,22 @@
                     if (toNumber.disabled){
                         toNumber.value = fromNumber.value;
                         for (const [key, value] of Object.entries(total)) {
-                            toNumber.value -= value;
+                            if (
+                                key === 'Sığortaolunan'
+                            ){
+                                toNumber.value -= value;
+                            }
                         }
                         toNumber.value = toNumber.value;
                         calculatorTableBody.innerHTML = html;
                     } else if (fromNumber.disabled){
                         fromNumber.value = toNumber.value;
                         for (const [key, value] of Object.entries(total)) {
-                            fromNumber.value -= value;
+                            if (
+                                key === 'Sığortaolunan'
+                            ){
+                                fromNumber.value -= value;
+                            }
                         }
                         fromNumber.value = fromNumber.value;
                         calculatorTableBody.innerHTML = html;
