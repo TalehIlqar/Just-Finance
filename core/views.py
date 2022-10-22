@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.utils.translation import activate, gettext_lazy as _
 
 from django.views.generic import ListView
-from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Excell_template
+from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Excell_template, ServiceFAQ
 
 
 def index(request):
@@ -53,7 +53,9 @@ def service_detail(request, slug):
     context = {
         "title": _("Service Detail"),
         "service": Service.objects.get(slug=slug),
-    }
+        "servicesfaq": ServiceFAQ.objects.filter(service=Service.objects.get(slug=slug)),
+
+    }   
     return render(request, "pages/v2service-detail.html", context)
 
 

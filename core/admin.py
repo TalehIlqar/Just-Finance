@@ -2,7 +2,10 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Blog, Excell_template, Service, Finance, Tax, HR, About, Contact, FAQ, ApplicationCategory, Setting, Subscriber
+from .models import (
+    Blog, Excell_template, Service, HR, About, Contact, FAQ, ApplicationCategory,
+    Setting, Subscriber, ServiceFAQ
+)
 
 
 @admin.register(Blog)
@@ -14,9 +17,15 @@ class AdminBlog(admin.ModelAdmin):
 
 @admin.register(Service)
 class AdminService(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image')
+    list_display = ('title', 'image')
     search_fields = ('title',)
     exclude = ('slug',)
+
+
+@admin.register(ServiceFAQ)
+class AdminServiceFAQ(admin.ModelAdmin):
+    list_display = ('service', 'question', 'answer')
+    search_fields = ('question',)
 
 
 # @admin.register(Finance)

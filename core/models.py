@@ -45,6 +45,17 @@ class Service(BaseModel):
         super(Service, self).save(*args, **kwargs)
 
 
+class ServiceFAQ(BaseModel):
+    service = models.ForeignKey(
+        Service, on_delete=models.CASCADE, verbose_name=_("Service")
+    )
+    question = models.CharField(max_length=200, verbose_name=_("Question"))
+    answer = models.TextField(verbose_name=_("Answer"))
+    # ordering = ["-id"]
+    def __str__(self):
+        return self.question
+
+
 class Finance(BaseModel):
     title = models.CharField(max_length=200, verbose_name=_("Title"))
     description = RichTextField(verbose_name=_("Description"))
