@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.utils.translation import activate, gettext_lazy as _
 
 from django.views.generic import ListView
+
+from calculator.models import SectorType
 from core.models import About, HR, FAQ, ApplicationCategory, Service, Blog, Excell_template, ServiceFAQ
 
 
@@ -18,6 +20,7 @@ def index(request):
         "blogs_pin": Blog.objects.filter(is_pin=True).order_by('-id')[:1],
         "applicationcategory": ApplicationCategory.objects.all(),
         "media_url": settings.MEDIA_URL,
+        "sector_types": SectorType.objects.all(),
     }
     return render(request, "pages/v2index.html", context)
 
