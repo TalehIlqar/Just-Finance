@@ -51,7 +51,10 @@ class ServiceFAQ(BaseModel):
     )
     question = models.CharField(max_length=200, verbose_name=_("Question"))
     answer = models.TextField(verbose_name=_("Answer"))
-    # ordering = ["-id"]
+
+    class Meta:
+        ordering = ["id"]
+
     def __str__(self):
         return self.question
 
