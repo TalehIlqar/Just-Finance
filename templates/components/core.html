@@ -7,37 +7,37 @@
 
 {% block content %}
 
-<a href="tel:+4733378901" class="iconw iconw-right iconw-call">
-    <img src="{% static 'ELAVE/iconCall.png' %}" alt="">
-</a>
-{% if settings.whatsapp %}
-<a href="https://wa.me/{{ settings.whatsapp }}" class="iconw iconw-right iconw-whatsapp">
-    <img src="{% static 'ELAVE/iconWhatsapp.svg.webp' %}" alt="">
-</a>
-{% endif %}
-<div href="" id="dotsHolder" class="dots-holder iconw  ">
-    <a class=" iconw-3dots " onclick="toggle3dots()">
-        <img src="{% static 'ELAVE/iconCloudBlue5.png' %}" alt="">
+    <a href="tel:+4733378901" class="iconw iconw-right iconw-call">
+        <img src="{% static 'ELAVE/iconCall.png' %}" alt="">
     </a>
-    {% if settings.telegram %}
-    <a class="iconw-telegram" href="https://t.me/+{{settings.telegram}}">
-        <img src="{% static 'ELAVE/iconTelegram.png' %}" alt="">
-    </a>
+    {% if settings.whatsapp %}
+        <a href="https://wa.me/{{ settings.whatsapp }}" class="iconw iconw-right iconw-whatsapp">
+            <img src="{% static 'ELAVE/iconWhatsapp.svg.webp' %}" alt="">
+        </a>
     {% endif %}
-    {% if settings.email_address %}
-    <a class="iconw-mail" href="mailto:person@{{settings.email_address}}">
-        <img src="{% static 'ELAVE/iconMail3.png' %}" alt="">
-    </a>
-    {% endif %}
-    {% if settings.instagram %}
-    <a class="iconw-insta" href="{{ settings.instagram }}">
-        <img src="{% static 'ELAVE/iconInstagram.svg.webp' %}" alt="">
-    </a>
-    {% endif %}
-    {% if settings.facebook %}
-    <a class="iconw-facebook" href="{{ settings.facebook }}">
-        <img src="{% static 'ELAVE/iconFacebook.png' %}" alt="">
-    </a>
-    {% endif %}
-
+    <div href="" id="dotsHolder" class="dots-holder iconw  ">
+        <a class=" iconw-3dots " onclick="toggle3dots()">
+            <img src="{% static 'ELAVE/iconCloudBlue5.png' %}" alt="">
+        </a>
+        {% if settings.telegram %}
+            <a class="iconw-telegram" href="https://t.me/+{{ settings.telegram }}">
+                <img src="{% static 'ELAVE/iconTelegram.png' %}" alt="">
+            </a>
+        {% endif %}
+        {% if settings.email_address %}
+            <a class="iconw-mail" href="mailto:person@{{ settings.email_address }}">
+                <img src="{% static 'ELAVE/iconMail3.png' %}" alt="">
+            </a>
+        {% endif %}
+        {% if settings.instagram %}
+            <a class="iconw-insta" href="{{ settings.instagram }}">
+                <img src="{% static 'ELAVE/iconInstagram.svg.webp' %}" alt="">
+            </a>
+        {% endif %}
+        {% if settings.facebook %}
+            <a class="iconw-facebook" href="{{ settings.facebook }}">
+                <img src="{% static 'ELAVE/iconFacebook.png' %}" alt="">
+            </a>
+        {% endif %}
+    </div>
 {% endblock content %}
