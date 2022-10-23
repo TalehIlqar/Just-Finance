@@ -69,7 +69,7 @@
                 },
                 body: JSON.stringify(data)
             })
-                .then(response => response.json())
+                .then(response => response.ok ? response.json() : Promise.reject(response))
                 .then(data => {
                     total = {};
                     html = '';
@@ -84,6 +84,11 @@
                                 total[item] = value[item];
                             }
                         }
+                        if (total['total']) {
+                            total['total'] += value[1];
+                        } else {
+                            total['total'] = value[1];
+                        }
                         html += '</tr>';
                     }
                     html += '<tr>';
@@ -92,6 +97,11 @@
                         html += '<td>' + value + '</td>';
                     }
                     html += '</tr>';
+                    if (toNumber.disabled){
+                        toNumber.value = fromNumber.value - total['total'];
+                    } else {
+                        fromNumber.value = toNumber.value + total['total'];
+                    }
                     calculatorTableBody.innerHTML = html;
                 })
                 .catch((error) => {
