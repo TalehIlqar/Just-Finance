@@ -99,9 +99,9 @@
                     }
                     html += '</tr>';
                     if (toNumber.disabled){
-                        toNumber.value = fromNumber.value - parseFloat(inputTotal['total']);
+                        toNumber.value = parseFloat(fromNumber.value) - parseFloat(inputTotal['total']);
                     } else {
-                        fromNumber.value = toNumber.value + parseFloat(inputTotal['total']);
+                        fromNumber.value = parseFloat(toNumber.value) + parseFloat(inputTotal['total']);
                     }
                     calculatorTableBody.innerHTML = html;
                 })
