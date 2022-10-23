@@ -27,9 +27,12 @@
     // BACKSTRETCH SLIDESHOW
     // $('#section_1').backstretch(backstretchImages,  {duration: 2000, fade: 750});
     $('#section_1').backstretch([
-        "static/images/slide/pexels-cottonbro-7428212.jpg",
-        "static/images/slide/pexels-cottonbro-7437090 (1).jpg",
-        "static/images/slide/pexels-cottonbro-7437100.jpg"
+        // "static/images/slide/pexels-cottonbro-7428212.jpg",
+        // "static/images/slide/pexels-cottonbro-7437090 (1).jpg",
+        // "static/images/slide/pexels-cottonbro-7437100.jpg",
+        "static/images/slide/birinci.jpg",
+        "static/images/slide/ikinci.jpg",
+        "static/images/slide/ucuncu.jpg"
     ], { duration: 2000, fade: 750 });
 
 })(window.jQuery);
