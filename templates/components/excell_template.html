@@ -47,9 +47,12 @@
                     <p class="card-title">{{ ex.title |truncatechars:20}}
                     </p>
                     <p class="ms-auto d-flex">
-                        <button style="margin-right: 10px;" href="#" onclick="toggleIframe('iframe1')" class="btn btn-primary">
+                        <!-- <button style="margin-right: 10px;" href="#" onclick="toggleIframe('iframe1')" class="btn btn-primary">
                             <span id="iframe1span">{% trans 'Show' %}</span>
-                        </button>
+                        </button> -->
+                        <a
+                            href="{% url 'excell' ex.id %}show"
+                            class="btn btn-success">{% trans 'Show' %}</a> &nbsp;
                         <a
                             href="{% url 'excell' ex.id %}download"
                             class="btn btn-success">{% trans 'Download' %}</a>

@@ -124,6 +124,6 @@ class ExcellDetail(ListView):
         response = FileResponse(open(excell.file.path, 'rb'))
         if status == 'download':
             response['Content-Disposition'] = 'attachment; filename=%s' % excell.file.name
-        else:
+        elif status == 'show':
             response['Content-Disposition'] = 'inline; filename=%s' % excell.file.name
         return response
