@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-m!^-we&&uzvg2pp4e0^#gc9ywp07de0$_mj5rb9=ynbx*^ek0+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", False) != "False"
-DEBUG = True
 STAGING = os.environ.get("STAGING", "False") == "True"
 DEBUG_TOOLBAR = os.environ.get("DEBUG_TOOLBAR", "False") == "True"
 PROD = not DEBUG
