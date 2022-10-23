@@ -72,6 +72,7 @@
                 .then(response => response.ok ? response.json() : Promise.reject(response))
                 .then(data => {
                     total = {};
+                    inputTotal = {};
                     html = '';
                     for (const [key, value] of Object.entries(data)) {
                         html += '<tr>';
@@ -84,10 +85,10 @@
                                 total[item] = value[item];
                             }
                         }
-                        if (total['total']) {
-                            total['total'] += value[1];
+                        if (inputTotal['total']) {
+                            inputTotal['total'] += value[1];
                         } else {
-                            total['total'] = value[1];
+                            inputTotal['total'] = value[1];
                         }
                         html += '</tr>';
                     }
@@ -98,9 +99,9 @@
                     }
                     html += '</tr>';
                     if (toNumber.disabled){
-                        toNumber.value = fromNumber.value - total['total'];
+                        toNumber.value = fromNumber.value - inputTotal['total'];
                     } else {
-                        fromNumber.value = toNumber.value + total['total'];
+                        fromNumber.value = toNumber.value + inputTotal['total'];
                     }
                     calculatorTableBody.innerHTML = html;
                 })
