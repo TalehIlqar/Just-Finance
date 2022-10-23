@@ -100,18 +100,18 @@
                                 toNumber.value -= value;
                             }
                         }
+                        toNumber.value = toNumber.value;
                         calculatorTableBody.innerHTML = html;
                     } else if (fromNumber.disabled){
                         fromNumber.value = toNumber.value;
-                        fromNumberValue = 0;
                         for (const [key, value] of Object.entries(total)) {
                             if (
                                 key === 'Sığortaolunan'
                             ){
-                                fromNumberValue += value;
+                                fromNumber.value -= value;
                             }
                         }
-                        fromNumber.value = toNumber.value + fromNumberValue;
+                        fromNumber.value = fromNumber.value;
                         calculatorTableBody.innerHTML = html;
                     }
                 })
