@@ -27,8 +27,9 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Tutulmalar</th>
-                    <th scope="col">Sığortaedən</th>
-                    <th scope="col">Sığortaolunan</th>
+                    {% for name in insurance_type_names %}
+                        <th scope="col">{{ name }}</th>
+                    {% endfor %}
                 </tr>
                 </thead>
                 <tbody id="calculator-table-body">
@@ -72,48 +73,6 @@
                 .then(data => {
                     total = {};
                     html = '';
-                    data.sector_type.tax_types.forEach(function (tax_type) {
-                        html += '<tr>';
-                        html += '<td>' + tax_type.name + '</td>';
-                        tax_type.insurance_types.forEach(function (insurance_type) {
-                            html += '<td>' + (insurance_type.fee.fee > 0 ? insurance_type.fee.fee : '') + '</td>';
-                            if (total[insurance_type.name]) {
-                                total[insurance_type.name] += insurance_type.fee.fee;
-                            } else {
-                                total[insurance_type.name] = insurance_type.fee.fee;
-                            }
-                        });
-                        html += '</tr>';
-                    });
-                    html += '<tr>';
-                    html += '<td>Toplam</td>';
-                    for (const [key, value] of Object.entries(total)) {
-                        html += '<td>' + value + '</td>';
-                    }
-                    html += '</tr>';
-                    if (toNumber.disabled){
-                        toNumber.value = fromNumber.value;
-                        for (const [key, value] of Object.entries(total)) {
-                            if (
-                                key === 'Sığortaolunan'
-                            ){
-                                toNumber.value -= value;
-                            }
-                        }
-                        toNumber.value = toNumber.value;
-                        calculatorTableBody.innerHTML = html;
-                    } else if (fromNumber.disabled){
-                        fromNumber.value = toNumber.value;
-                        for (const [key, value] of Object.entries(total)) {
-                            if (
-                                key === 'Sığortaolunan'
-                            ){
-                                fromNumber.value -= value;
-                            }
-                        }
-                        fromNumber.value = fromNumber.value;
-                        calculatorTableBody.innerHTML = html;
-                    }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
