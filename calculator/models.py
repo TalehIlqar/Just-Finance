@@ -5,8 +5,8 @@ from django.db import models
 
 
 class InsuranceFee(models.Model):
-    from_number = models.IntegerField()
-    to_number = models.IntegerField()
+    from_number = models.FloatField()
+    to_number = models.FloatField()
     from_to_formula = models.CharField(max_length=255, blank=True, null=True)
     to_from_formula = models.CharField(max_length=255, blank=True, null=True)
     insurance_type = models.ForeignKey(
