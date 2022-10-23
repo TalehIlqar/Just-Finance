@@ -49,21 +49,21 @@ class CalculatorView(APIView):
                                     "fee": {
                                         "from_number": insurance_type.fees.filter(
                                             **qs_filter).order_by(
-                                            "-from_number").first().from_number if insurance_type.fees.filter(
-                                            **qs_filter).order_by("-from_number").first() else None,
+                                            "insurance_type__name").first().from_number if insurance_type.fees.filter(
+                                            **qs_filter).order_by("insurance_type__name").first() else None,
                                         "to_number": insurance_type.fees.filter(**qs_filter).order_by(
-                                            "-from_number").first().to_number if insurance_type.fees.filter(
-                                            **qs_filter).order_by("-from_number").first() else None,
+                                            "insurance_type__name").first().to_number if insurance_type.fees.filter(
+                                            **qs_filter).order_by("insurance_type__name").first() else None,
                                         "fee": round(eval(
                                             insurance_type.fees.filter(**qs_filter).order_by(
-                                                "-from_number" if from_number else "-to_number").first().from_to_formula
+                                                "insurance_type__name").first().from_to_formula
                                             if from_number else insurance_type.fees.filter(
                                                 **qs_filter).order_by(
-                                                "-from_number").first().to_from_formula, {},
+                                                "insurance_type__name").first().to_from_formula, {},
                                             {"x": from_number if from_number else to_number}),
                                             2) if insurance_type.fees.filter(
                                             **qs_filter).order_by(
-                                            "-from_number" if from_number else "-to_number").first() else None,
+                                            "insurance_type__name").first() else None,
 
                                     },
                                 }
