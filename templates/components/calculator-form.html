@@ -78,7 +78,7 @@
                         html += '<tr>';
                         html += '<td>' + key + '</td>';
                         for (const [item] of Object.entries(value)) {
-                            html += '<td>' + value[item] + '</td>';
+                            html += '<td>' + parseFloat(value[item]).toFixed(2) + '</td>';
                             if (total[item]) {
                                 total[item] += value[item];
                             } else {
@@ -95,13 +95,13 @@
                     html += '<tr>';
                     html += '<td>Toplam</td>';
                     for (const [key, value] of Object.entries(total)) {
-                        html += '<td>' + value + '</td>';
+                        html += '<td>' + parseFloat(value).toFixed(2) + '</td>';
                     }
                     html += '</tr>';
                     if (toNumber.disabled){
-                        toNumber.value = parseFloat(fromNumber.value) - parseFloat(inputTotal['total']);
+                        toNumber.value = (parseFloat(fromNumber.value) - parseFloat(inputTotal['total']).toFixed(2));
                     } else {
-                        fromNumber.value = parseFloat(toNumber.value) + parseFloat(inputTotal['total']);
+                        fromNumber.value = (parseFloat(toNumber.value) + parseFloat(inputTotal['total']).toFixed(2));
                     }
                     calculatorTableBody.innerHTML = html;
                 })
