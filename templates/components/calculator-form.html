@@ -56,12 +56,11 @@
             const data = {
                 'sector_type': sectorTypeId,
             }
-            if (fromNumber.value) {
+            if (toNumber.disabled) {
                 data['from_number'] = fromNumber.value
-            } else if (toNumber.value) {
+            } else if (fromNumber.disabled) {
                 data['to_number'] = toNumber.value
             }
-            console.log(data)
             fetch(url, {
                 method: 'POST',
                 headers: {
