@@ -40,7 +40,7 @@ class CalculatorView(APIView):
                 insurance_fees = insurance_type.fees.filter(**qs_filter).order_by("insurance_type__name")
                 for insurance_fee in insurance_fees:
                     row = {tax_type.name: round(eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
-                                                     {'x': from_number or to_number}))}
+                                                     {'x': from_number or to_number}), 2)}
                     data.append(row)
 
         res = dict()
