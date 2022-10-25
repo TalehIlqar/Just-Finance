@@ -57,9 +57,9 @@
                 'sector_type': sectorTypeId,
             }
             if (fromNumber.value) {
-                data['from_number'] = parseInt(fromNumber.value)
+                data['from_number'] = parseFloat(fromNumber.value)
             } else if (toNumber.value) {
-                data['to_number'] = parseInt(toNumber.value)
+                data['to_number'] = parseFloat(toNumber.value)
             }
             fetch(url, {
                 method: 'POST',
@@ -71,7 +71,6 @@
             })
                 .then(response => response.ok ? response.json() : Promise.reject(response))
                 .then(data => {
-                    calculatorTableBody.innerHTML = '';
                     total = {};
                     inputTotal = {};
                     html = '';
