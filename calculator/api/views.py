@@ -1,5 +1,3 @@
-from collections import ChainMap
-
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from rest_framework import permissions, status
@@ -39,8 +37,8 @@ class CalculatorView(APIView):
             for insurance_type in tax_type.insurance_types.all():
                 insurance_fees = insurance_type.fees.filter(**qs_filter).order_by("insurance_type__name")
                 for insurance_fee in insurance_fees:
-                    row = {tax_type.name: round(eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
-                                                     {'x': from_number or to_number}), 2)}
+                    row = {tax_type.name: eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
+                                               {'x': from_number or to_number})}
                     data.append(row)
 
         res = dict()
