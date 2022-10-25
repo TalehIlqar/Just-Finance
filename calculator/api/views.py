@@ -12,8 +12,8 @@ class CalculatorView(APIView):
 
     def post(self, request):
         sector_type = get_object_or_404(SectorType, id=request.data.get("sector_type"))
-        from_number = request.data.get("from_number")
-        to_number = request.data.get("to_number")
+        from_number = float(request.data.get("from_number"))
+        to_number = float(request.data.get("to_number"))
 
         if from_number:
             qs_filter = {

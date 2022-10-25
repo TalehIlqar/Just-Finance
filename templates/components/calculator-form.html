@@ -57,9 +57,9 @@
                 'sector_type': sectorTypeId,
             }
             if (fromNumber.value) {
-                data['from_number'] = parseFloat(fromNumber.value)
+                data['from_number'] = fromNumber.value
             } else if (toNumber.value) {
-                data['to_number'] = parseFloat(toNumber.value)
+                data['to_number'] = toNumber.value
             }
             fetch(url, {
                 method: 'POST',
