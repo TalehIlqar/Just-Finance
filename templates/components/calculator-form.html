@@ -86,9 +86,9 @@
                             }
                         }
                         if (inputTotal['total']) {
-                            inputTotal['total'] += value[1];
+                            inputTotal['total'] += parseFloat(value[1]);
                         } else {
-                            inputTotal['total'] = value[1];
+                            inputTotal['total'] = parseFloat(value[1]);
                         }
                         html += '</tr>';
                     }
