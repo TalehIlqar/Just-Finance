@@ -98,6 +98,7 @@
                         html += '<td>' + parseFloat(value).toFixed(2) + '</td>';
                     }
                     html += '</tr>';
+                    console.log(inputTotal);
                     if (toNumber.disabled){
                         toNumber.value = (parseFloat(fromNumber.value) - parseFloat(inputTotal['total']).toFixed(2));
                     } else {
