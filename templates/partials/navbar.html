@@ -59,20 +59,23 @@
         </div>
     </div>
 </nav>
+
 <div id="languageHolder" class=" ">
-    <div class="language" style="margin-left: 1rem">
-        <div class="absolute">
+    <div class="language mt-md-3 mt-4" style="margin-left: 1rem;">
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
-            {% for language in languages %}
-            <!-- <a class="{% if language.code == LANGUAGE_CODE %}active{% endif %}"
-            href="{% url 'set_language' language.code %}">{{ language.code|upper }}{% if language.code == LANGUAGE_CODE %}<i
-                class="fa-solid fa-chevron-down"></i>{% endif %}</a> -->
-            <a class=""
-                href="{% url 'set_language' language.code %}">{{ language.code|upper }}{% if language.code == 'az' %}<i
-                    class="fa-solid fa-chevron-down"></i>{% endif %}</a>
-            {% endfor %}
-        </div>
+            <select onchange="Mylang(this.value)" style="border: 1px solid #ffffff;">
+                {% for language in languages %}
+                <option value="{% url 'set_language' language.code %}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                {{ language.code|upper }}</option>
+                {% endfor %}
+            </select>
     </div>
 </div>
+
+<script>
+    function Mylang(lang) {
+        window.location.href = lang;
+    }
+</script>
