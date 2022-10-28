@@ -15,9 +15,9 @@ def index(request):
         "about": About.objects.last(),
         "hr": HR.objects.last(),
         "faqs": FAQ.objects.all(),
-        "services": Service.objects.all().order_by('-id')[:4],
-        "blogs": Blog.objects.filter(is_pin=False).order_by('-id')[:2],
-        "blogs_pin": Blog.objects.filter(is_pin=True).order_by('-id')[:1],
+        "services": Service.objects.all()[:4],
+        "blogs": Blog.objects.filter(is_pin=False)[:2],
+        "blogs_pin": Blog.objects.filter(is_pin=True)[:1],
         "applicationcategory": ApplicationCategory.objects.all(),
         "media_url": settings.MEDIA_URL,
         "sector_types": SectorType.objects.all(),
@@ -47,7 +47,7 @@ def contact(request):
 def services(request):
     context = {
         "title": _("Services"),
-        "services": Service.objects.all().order_by('-id'),
+        "services": Service.objects.all(),
     }
     return render(request, "pages/v2services.html", context)
 

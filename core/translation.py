@@ -23,7 +23,7 @@ class HRTranslationOptions(TranslationOptions):
 
 
 class ServiceTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'description')
 
 
 class TaxTranslationOptions(TranslationOptions):
