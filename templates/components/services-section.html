@@ -11,8 +11,8 @@
                 <div class="card text-center mb-4">
                     <img src="{% if service.image %} {{ service.image.url }} {% endif %}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.description|truncatechars:250|safe }}</p>
+                        <h5 class="card-title">{% if service.title %}{{ service.title }}{% endif %}</h5>
+                        <p class="card-text">{% if service.description %}{{ service.description|truncatechars:250|safe }}{% endif %}</p>
                         <a href="{% url 'service_detail' service.slug %}" class="btn btn-primary stretched-link">{% trans 'Learn More' %}</a>
                     </div>
                 </div>
