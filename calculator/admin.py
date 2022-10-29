@@ -1,44 +1,44 @@
-from django.contrib import admin
+# from django.contrib import admin
 
-from .models import (
-    InsuranceFee,
-    InsuranceType,
-    TaxType,
-    SectorType,
-)
+# from .models import (
+#     InsuranceFee,
+#     InsuranceType,
+#     TaxType,
+#     SectorType,
+# )
 
-# Register your models here.
-
-
-class InsuranceFeeInline(admin.TabularInline):
-    model = InsuranceFee
-    extra = 0
+# # Register your models here.
 
 
-class InsuranceTypeInline(admin.TabularInline):
-    model = InsuranceType
-    extra = 0
-    inlines = [InsuranceFeeInline]
+# class InsuranceFeeInline(admin.TabularInline):
+#     model = InsuranceFee
+#     extra = 0
 
 
-class TaxTypeInline(admin.TabularInline):
-    model = TaxType
-    extra = 0
-    inlines = [InsuranceTypeInline]
+# class InsuranceTypeInline(admin.TabularInline):
+#     model = InsuranceType
+#     extra = 0
+#     inlines = [InsuranceFeeInline]
 
 
-class TaxTypeAdmin(admin.ModelAdmin):
-    inlines = [InsuranceTypeInline]
+# class TaxTypeInline(admin.TabularInline):
+#     model = TaxType
+#     extra = 0
+#     inlines = [InsuranceTypeInline]
 
 
-class SectorTypeAdmin(admin.ModelAdmin):
-    inlines = [TaxTypeInline]
+# class TaxTypeAdmin(admin.ModelAdmin):
+#     inlines = [InsuranceTypeInline]
 
 
-class InsuranceTypeAdmin(admin.ModelAdmin):
-    inlines = [InsuranceFeeInline]
+# class SectorTypeAdmin(admin.ModelAdmin):
+#     inlines = [TaxTypeInline]
 
 
-admin.site.register(SectorType, SectorTypeAdmin)
-admin.site.register(TaxType, TaxTypeAdmin)
-admin.site.register(InsuranceType, InsuranceTypeAdmin)
+# class InsuranceTypeAdmin(admin.ModelAdmin):
+#     inlines = [InsuranceFeeInline]
+
+
+# admin.site.register(SectorType, SectorTypeAdmin)
+# admin.site.register(TaxType, TaxTypeAdmin)
+# admin.site.register(InsuranceType, InsuranceTypeAdmin)
