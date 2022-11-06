@@ -74,7 +74,7 @@
                     total = {};
                     inputTotal = {};
                     html = '';
-                    for (const [key, value] of Object.entries(data)) {
+                    for (const [key, value] of Object.entries(data.data)) {
                         html += '<tr>';
                         html += '<td>' + key + '</td>';
                         for (const [item] of Object.entries(value)) {
@@ -98,11 +98,10 @@
                         html += '<td>' + parseFloat(value).toFixed(2) + '</td>';
                     }
                     html += '</tr>';
-                    console.log(inputTotal, fromNumber.value, toNumber.value, parseFloat(fromNumber.value), parseFloat(toNumber.value));
                     if (toNumber.disabled) {
-                        toNumber.value = (parseFloat(fromNumber.value) - parseFloat(inputTotal['total']).toFixed(2));
+                        toNumber.value = (parseFloat(fromNumber.value) + parseFloat(data.input_value)).toFixed(2);
                     } else {
-                        fromNumber.value = (parseFloat(toNumber.value) + parseFloat(inputTotal['total']).toFixed(2));
+                        fromNumber.value = (parseFloat(toNumber.value) + parseFloat(data.input_value)).toFixed(2);
                     }
                     calculatorTableBody.innerHTML = html;
                 })
