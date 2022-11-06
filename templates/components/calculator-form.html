@@ -16,10 +16,10 @@
 
             </div>
             <div>
-                <label for="id_from_number">{% translate 'Gross maaş' %}
+                <label for="id_from_number">{% translate 'Gross maaş' %}</label>
                 <input type="number" id="id_from_number">
                 <i class="fa-solid fa-left-right" style="cursor: pointer" onclick="swapNumbers()"></i>
-                <label for="id_to_number">{% translate 'Net maaş' %}
+                <label for="id_to_number">{% translate 'Net maaş' %}</label>
                 <input type="number" id="id_to_number" disabled>
             </div>
             <br>
@@ -27,8 +27,9 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Tutulmalar</th>
-                    <th scope="col">Sığortaedən</th>
-                    <th scope="col">Sığortaolunan</th>
+                    {% for name in insurance_type_names %}
+                        <th scope="col">{{ name }}</th>
+                    {% endfor %}
                 </tr>
                 </thead>
                 <tbody id="calculator-table-body">
@@ -55,10 +56,10 @@
             const data = {
                 'sector_type': sectorTypeId,
             }
-            if (fromNumber.value) {
-                data['from_number'] = parseInt(fromNumber.value)
-            } else if (toNumber.value) {
-                data['to_number'] = parseInt(toNumber.value)
+            if (toNumber.disabled) {
+                data['from_number'] = fromNumber.value
+            } else if (fromNumber.disabled) {
+                data['to_number'] = toNumber.value
             }
             fetch(url, {
                 method: 'POST',
@@ -68,52 +69,42 @@
                 },
                 body: JSON.stringify(data)
             })
-                .then(response => response.json())
+                .then(response => response.ok ? response.json() : Promise.reject(response))
                 .then(data => {
                     total = {};
+                    inputTotal = {};
                     html = '';
-                    data.sector_type.tax_types.forEach(function (tax_type) {
+                    for (const [key, value] of Object.entries(data)) {
                         html += '<tr>';
-                        html += '<td>' + tax_type.name + '</td>';
-                        tax_type.insurance_types.forEach(function (insurance_type) {
-                            html += '<td>' + (insurance_type.fee.fee > 0 ? insurance_type.fee.fee : '') + '</td>';
-                            if (total[insurance_type.name]) {
-                                total[insurance_type.name] += insurance_type.fee.fee;
+                        html += '<td>' + key + '</td>';
+                        for (const [item] of Object.entries(value)) {
+                            html += '<td>' + parseFloat(value[item]).toFixed(2) + '</td>';
+                            if (total[item]) {
+                                total[item] += value[item];
                             } else {
-                                total[insurance_type.name] = insurance_type.fee.fee;
+                                total[item] = value[item];
                             }
-                        });
+                        }
+                        if (inputTotal['total']) {
+                            inputTotal['total'] += parseFloat(value[1]);
+                        } else {
+                            inputTotal['total'] = parseFloat(value[1]);
+                        }
                         html += '</tr>';
-                    });
+                    }
                     html += '<tr>';
                     html += '<td>Toplam</td>';
                     for (const [key, value] of Object.entries(total)) {
-                        html += '<td>' + value + '</td>';
+                        html += '<td>' + parseFloat(value).toFixed(2) + '</td>';
                     }
                     html += '</tr>';
-                    if (toNumber.disabled){
-                        toNumber.value = fromNumber.value;
-                        for (const [key, value] of Object.entries(total)) {
-                            if (
-                                key === 'Sığortaolunan'
-                            ){
-                                toNumber.value -= value;
-                            }
-                        }
-                        toNumber.value = toNumber.value;
-                        calculatorTableBody.innerHTML = html;
-                    } else if (fromNumber.disabled){
-                        fromNumber.value = toNumber.value;
-                        for (const [key, value] of Object.entries(total)) {
-                            if (
-                                key === 'Sığortaolunan'
-                            ){
-                                fromNumber.value -= value;
-                            }
-                        }
-                        fromNumber.value = fromNumber.value;
-                        calculatorTableBody.innerHTML = html;
+                    console.log(inputTotal, fromNumber.value, toNumber.value, parseFloat(fromNumber.value), parseFloat(toNumber.value));
+                    if (toNumber.disabled) {
+                        toNumber.value = (parseFloat(fromNumber.value) - parseFloat(inputTotal['total']).toFixed(2));
+                    } else {
+                        fromNumber.value = (parseFloat(toNumber.value) + parseFloat(inputTotal['total']).toFixed(2));
                     }
+                    calculatorTableBody.innerHTML = html;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -125,11 +116,11 @@
     function swapNumbers() {
         const fromNumber = document.querySelector('#id_from_number');
         const toNumber = document.querySelector('#id_to_number');
-        if (fromNumber.disabled){
+        if (fromNumber.disabled) {
             fromNumber.disabled = false;
             toNumber.disabled = true;
             toNumber.value = '';
-        } else if (toNumber.disabled){
+        } else if (toNumber.disabled) {
             fromNumber.disabled = true;
             toNumber.disabled = false;
             fromNumber.value = '';
