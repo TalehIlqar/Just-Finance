@@ -47,7 +47,7 @@ def contact(request):
 def services(request):
     context = {
         "title": _("Services"),
-        "services": Service.objects.all(),
+        "services": Service.objects.all().order_by('-id'),
     }
     return render(request, "pages/v2services.html", context)
 
