@@ -4,7 +4,7 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from calculator.models import SectorType
+from calculator.models import SectorType, InsuranceType
 
 
 class CalculatorView(APIView):
@@ -35,12 +35,19 @@ class CalculatorView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
         data = []
+        input_value = 0
         for tax_type in sector_type.tax_types.all():
             for insurance_type in tax_type.insurance_types.all():
                 insurance_fees = insurance_type.fees.filter(**qs_filter).order_by("insurance_type__name")
                 for insurance_fee in insurance_fees:
-                    row = {tax_type.name: eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
-                                               {'x': from_number or to_number})}
+                    value = eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
+                                 {'x': from_number or to_number})
+                    if insurance_type.name == InsuranceType.NAME_CHOICES[0][0]:
+                        if from_number:
+                            input_value -= value
+                        else:
+                            input_value += value
+                    row = {tax_type.name: value}
                     data.append(row)
 
         res = dict()
@@ -50,4 +57,9 @@ class CalculatorView(APIView):
                     res[i] += [item[i]]
                 else:
                     res[i] = [item[i]]
-        return Response(res, status=status.HTTP_200_OK)
+        return Response(
+            {
+                "data": res,
+                "input_value": input_value,
+            },
+            status=status.HTTP_200_OK)
