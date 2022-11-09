@@ -40,8 +40,11 @@ class CalculatorView(APIView):
             for insurance_type in tax_type.insurance_types.all().order_by("name"):
                 insurance_fees = insurance_type.fees.filter(**qs_filter).order_by("insurance_type__name")
                 for insurance_fee in insurance_fees:
-                    value = eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
-                                 {'x': from_number or to_number})
+                    try:
+                        value = eval(insurance_fee.from_to_formula or insurance_fee.to_from_formula, {},
+                                     {'x': from_number or to_number})
+                    except ZeroDivisionError:
+                        value = 0
                     if insurance_type.name == InsuranceType.NAME_CHOICES[0][0]:
                         if from_number:
                             input_value -= value
